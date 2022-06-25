@@ -1,0 +1,972 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>trips - Strict True Leopard</title>
+  <meta property="og:title" content="trips - Strict True Leopard" />
+  <meta property="og:title" content="contact - Strict True Leopard" />
+  <meta property="og:title" content="usloviq - Strict True Leopard" />
+  <meta
+          property="og:title"
+          content="Testing Features - Strict True Leopard"
+  />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <style data-tag="reset-style-sheet">
+    html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6 {  margin: 0;  padding: 0;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+  </style>
+  <style data-tag="default-style-sheet">
+    html {
+      font-family: Inter;
+      font-size: 16px;
+    }
+
+    body {
+      font-weight: 400;
+      font-style:normal;
+      text-decoration: none;
+      text-transform: none;
+      letter-spacing: normal;
+      line-height: 1.15;
+      color: var(--dl-color-gray-black);
+      background-color: var(--dl-color-gray-white);
+
+    }
+  </style>
+  <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          data-tag="font"
+  />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'trips.css' %}">
+</head>
+<body>
+<div>
+  <link href="./trips.css" rel="stylesheet" />
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom" style="padding: 10px 30px">
+    <a class="navbar-brand" href="#"><img src="public/playground_assets/logo-1500h.png" alt="Евротурс Лого" style="height: 47px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="font-size: 17px; font-weight: 600; font-family: Inter,serif;">
+      <div class="navbar-nav ml-auto">
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0 custom-btn" type="submit"><i class="bi bi-search"></i></button>
+        </form>
+        <a class="nav-item nav-link" href="index.html">НАЧАЛО</a>
+        <a class="nav-item nav-link active" href="trips.html">ЕКСКУРЗИИ И ПОЧИВКИ</a>
+        <a class="nav-item nav-link" href="about.html">ЗА НАС</a>
+        <a class="nav-item nav-link" href="contact.html">КОНТАТКИ</a>
+        <a class="nav-item nav-link" href="usloviq.html">УСЛОВИЯ</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="trips-container">
+    <span class="trips-text">
+          <span class="trips-text001">//</span>
+          <span class="trips-text002"></span>
+          <span class="trips-text003">Всички Екскурзии и Почивки</span>
+          <span class="trips-text004"></span>
+          <span class="trips-text005">//</span>
+        </span>
+    <div class="trips-container002">
+      <img
+              alt="image"
+              src="{% static 'images/categ-200w.png' %}"
+              class="trips-image02"
+      />
+      <span class="trips-text006">Търси по Категория</span>
+    </div>
+    <div class="trips-container003">
+      <div class="trips-container004">
+        <div class="trips-container005">
+          <svg viewBox="0 0 1024 1024" class="trips-icon010">
+            <path
+                    d="M256 512v128h512v-128h-512zM342 298v128h128v-128h-128zM682 426v-128h-128v128h128zM854 512v214h-58l-28 84h-42l-28-84h-370l-30 84h-42l-28-84h-58v-214q0-34 26-60t60-26v-128q0-34 26-59t60-25h340q34 0 60 25t26 59v128q34 0 60 26t26 60z"
+            ></path>
+          </svg>
+        </div>
+        <span class="trips-text007">
+              <span>С нощувки</span>
+              <br />
+              <span></span>
+            </span>
+      </div>
+      <div class="trips-container006">
+        <div class="trips-container007">
+          <img
+                  alt="image"
+                  src="{% static 'images/icons8-basket-64-200h.png' %}"
+                  class="trips-image03"
+          />
+        </div>
+        <span class="trips-text010">Пазаруване</span>
+      </div>
+      <div class="trips-container008">
+        <div class="trips-container009">
+          <img
+                  alt="image"
+                  src="{% static 'images/icons8-restaurant-100-200h.png' %}"
+                  class="trips-image04"
+          />
+        </div>
+        <span class="trips-text011">Включена Храна</span>
+      </div>
+      <div class="trips-container010">
+        <div class="trips-container011">
+          <img
+                  alt="image"
+                  src="{% static 'images/icons8-guide-100.png' %}"
+                  class="trips-image05"
+          />
+        </div>
+        <span class="trips-text012">Екскурзия</span>
+      </div>
+      <div class="trips-container012">
+        <div class="trips-container013">
+          <img
+                  alt="image"
+                  src="{% static 'images/icons8-ski-resort-96-200h.png' %}"
+                  class="trips-image06"
+          />
+        </div>
+        <span class="trips-text013">
+              <span>Природа</span>
+              <br />
+              <span></span>
+            </span>
+      </div>
+      <div class="trips-container014">
+        <div class="trips-container015">
+          <img
+                  alt="image"
+                  src="{% static 'images/icons8-school-90-200h.png' %}"
+                  class="trips-image07"
+          />
+        </div>
+        <span class="trips-text016"><span>За Ученици</span></span>
+      </div>
+      <div class="trips-container016">
+        <div class="trips-container017">
+          <img
+                  alt="image"
+                  src="{% static 'images/icons8-holiday-100.png' %}"
+                  class="trips-image08"
+          />
+        </div>
+        <span class="trips-text018">Почивка</span>
+      </div>
+    </div>
+    <div class="trips-container018">
+      <div class="trips-container019">
+        <div class="trips-container020">
+          <img
+                  alt="image"
+                  src="{% static 'images/icons8-price-100-200h.png' %}"
+                  class="trips-image09"
+          />
+          <span class="trips-text019">Цена</span>
+        </div>
+        <select class="trips-select">
+          <option value="Option 1" selected>Избери Цена</option>
+          <option value="Option 2">До 50лв</option>
+          <option value="Option 3">До 100лв</option>
+          <option value="New Option">До 200лв</option>
+          <option value="New Option">До 300лв</option>
+        </select>
+      </div>
+      <div class="trips-container021">
+        <div class="trips-container022">
+          <svg viewBox="0 0 1024 1024" class="trips-icon012">
+            <path
+                    d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 960.002c-62.958 0-122.872-13.012-177.23-36.452l233.148-262.29c5.206-5.858 8.082-13.422 8.082-21.26v-96c0-17.674-14.326-32-32-32-112.99 0-232.204-117.462-233.374-118.626-6-6.002-14.14-9.374-22.626-9.374h-128c-17.672 0-32 14.328-32 32v192c0 12.122 6.848 23.202 17.69 28.622l110.31 55.156v187.886c-116.052-80.956-192-215.432-192-367.664 0-68.714 15.49-133.806 43.138-192h116.862c8.488 0 16.626-3.372 22.628-9.372l128-128c6-6.002 9.372-14.14 9.372-22.628v-77.412c40.562-12.074 83.518-18.588 128-18.588 70.406 0 137.004 16.26 196.282 45.2-4.144 3.502-8.176 7.164-12.046 11.036-36.266 36.264-56.236 84.478-56.236 135.764s19.97 99.5 56.236 135.764c36.434 36.432 85.218 56.264 135.634 56.26 3.166 0 6.342-0.080 9.518-0.236 13.814 51.802 38.752 186.656-8.404 372.334-0.444 1.744-0.696 3.488-0.842 5.224-81.324 83.080-194.7 134.656-320.142 134.656z"
+            ></path>
+          </svg>
+          <span class="trips-text020">Държава</span>
+        </div>
+        <select class="trips-select1">
+          <option value="Option 1">Избери Държава</option>
+          <option value="Option 2">България</option>
+          <option value="Option 3">Турция</option>
+          <option value="New Option">Италия</option>
+        </select>
+      </div>
+      <div class="trips-container023">
+        <div class="trips-container024">
+          <svg viewBox="0 0 950.8571428571428 1024" class="trips-icon014">
+            <path
+                    d="M73.143 950.857h164.571v-164.571h-164.571v164.571zM274.286 950.857h182.857v-164.571h-182.857v164.571zM73.143 749.714h164.571v-182.857h-164.571v182.857zM274.286 749.714h182.857v-182.857h-182.857v182.857zM73.143 530.286h164.571v-164.571h-164.571v164.571zM493.714 950.857h182.857v-164.571h-182.857v164.571zM274.286 530.286h182.857v-164.571h-182.857v164.571zM713.143 950.857h164.571v-164.571h-164.571v164.571zM493.714 749.714h182.857v-182.857h-182.857v182.857zM292.571 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM713.143 749.714h164.571v-182.857h-164.571v182.857zM493.714 530.286h182.857v-164.571h-182.857v164.571zM713.143 530.286h164.571v-164.571h-164.571v164.571zM731.429 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM950.857 219.429v731.429c0 40-33.143 73.143-73.143 73.143h-804.571c-40 0-73.143-33.143-73.143-73.143v-731.429c0-40 33.143-73.143 73.143-73.143h73.143v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h219.429v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h73.143c40 0 73.143 33.143 73.143 73.143z"
+            ></path>
+          </svg>
+          <span class="trips-text021">Месец</span>
+        </div>
+        <select class="trips-select2">
+          <option value="Option 1">Избери Месец</option>
+          <option value="Option 2">Януару</option>
+          <option value="Option 3">Февруари</option>
+          <option value="New Option">Март</option>
+          <option value="New Option">Април</option>
+          <option value="New Option">Май</option>
+          <option value="New Option">Юни</option>
+          <option value="New Option">Юли</option>
+          <option value="New Option">Август</option>
+        </select>
+      </div>
+      <div class="trips-container025">
+        <div class="trips-container026">
+          <svg viewBox="0 0 950.8571428571428 1024" class="trips-icon016">
+            <path
+                    d="M658.286 475.429c0-141.143-114.857-256-256-256s-256 114.857-256 256 114.857 256 256 256 256-114.857 256-256zM950.857 950.857c0 40-33.143 73.143-73.143 73.143-19.429 0-38.286-8-51.429-21.714l-196-195.429c-66.857 46.286-146.857 70.857-228 70.857-222.286 0-402.286-180-402.286-402.286s180-402.286 402.286-402.286 402.286 180 402.286 402.286c0 81.143-24.571 161.143-70.857 228l196 196c13.143 13.143 21.143 32 21.143 51.429z"
+            ></path>
+          </svg>
+          <span class="trips-text022">Търсачка</span>
+        </div>
+        <input
+                type="text"
+                placeholder="..."
+                class="trips-textinput input"
+        />
+      </div>
+      <div class="trips-container027">
+        <div class="trips-container028"></div>
+        <button class="trips-button button">Tърсене</button>
+      </div>
+    </div>
+    <div class="trips-container029">
+<!--      This is what I need!-->
+<!--      A single trip card-->
+      <a class=".reset-a" href="trip-detail.html"><div class="trips-container030">
+        <div class="trips-container031">
+          <div class="trips-container032">
+            <svg viewBox="0 0 1024 1024" class="trips-icon018">
+              <path
+                      d="M256 512v128h512v-128h-512zM342 298v128h128v-128h-128zM682 426v-128h-128v128h128zM854 512v214h-58l-28 84h-42l-28-84h-370l-30 84h-42l-28-84h-58v-214q0-34 26-60t60-26v-128q0-34 26-59t60-25h340q34 0 60 25t26 59v128q34 0 60 26t26 60z"
+              ></path>
+            </svg>
+          </div>
+          <div class="trips-container033">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-restaurant-100-200h.png"
+                    class="trips-image10"
+            />
+          </div>
+          <div title="музеии" class="trips-container034">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-museum-100-200h.png"
+                    class="trips-image11"
+            />
+          </div>
+        </div>
+        <img
+                alt="image"
+                src="public/playground_assets/trip5.jpg"
+                class="trips-image12"
+        />
+        <div class="trips-container035">
+              <span class="trips-text023">
+                <span>
+                  ГРАДЪТ НА МАКЕДОНСКИТЕ ЦАРЕ ХЕРАКЛЕЯ СИНТИКА - ПЕТРИЧ -
+                  САНДАНСКИ
+                </span>
+              </span>
+        </div>
+        <div class="trips-container036">
+          <div class="trips-container037">
+            <svg viewBox="0 0 1088 1024" class="trips-icon020">
+              <path
+                      d="M640 64c247.424 0 448 200.576 448 448s-200.576 448-448 448v-96c94.024 0 182.418-36.614 248.902-103.098s103.098-154.878 103.098-248.902c0-94.022-36.614-182.418-103.098-248.902s-154.878-103.098-248.902-103.098c-94.022 0-182.418 36.614-248.902 103.098-51.14 51.138-84.582 115.246-97.306 184.902h186.208l-224 256-224-256h164.57c31.060-217.102 217.738-384 443.43-384zM832 448v128h-256v-320h128v192z"
+              ></path>
+            </svg>
+            <span class="trips-text025">7 нощувки</span>
+          </div>
+          <div class="trips-container038">
+            <svg viewBox="0 0 950.8571428571428 1024" class="trips-icon022">
+              <path
+                      d="M73.143 950.857h164.571v-164.571h-164.571v164.571zM274.286 950.857h182.857v-164.571h-182.857v164.571zM73.143 749.714h164.571v-182.857h-164.571v182.857zM274.286 749.714h182.857v-182.857h-182.857v182.857zM73.143 530.286h164.571v-164.571h-164.571v164.571zM493.714 950.857h182.857v-164.571h-182.857v164.571zM274.286 530.286h182.857v-164.571h-182.857v164.571zM713.143 950.857h164.571v-164.571h-164.571v164.571zM493.714 749.714h182.857v-182.857h-182.857v182.857zM292.571 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM713.143 749.714h164.571v-182.857h-164.571v182.857zM493.714 530.286h182.857v-164.571h-182.857v164.571zM713.143 530.286h164.571v-164.571h-164.571v164.571zM731.429 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM950.857 219.429v731.429c0 40-33.143 73.143-73.143 73.143h-804.571c-40 0-73.143-33.143-73.143-73.143v-731.429c0-40 33.143-73.143 73.143-73.143h73.143v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h219.429v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h73.143c40 0 73.143 33.143 73.143 73.143z"
+              ></path>
+            </svg>
+            <span class="trips-text026">Юни, Юли, Август, Септември</span>
+          </div>
+          <div class="trips-container039">
+            <svg viewBox="0 0 1024 1024" class="trips-icon024">
+              <path
+                      d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 960.002c-62.958 0-122.872-13.012-177.23-36.452l233.148-262.29c5.206-5.858 8.082-13.422 8.082-21.26v-96c0-17.674-14.326-32-32-32-112.99 0-232.204-117.462-233.374-118.626-6-6.002-14.14-9.374-22.626-9.374h-128c-17.672 0-32 14.328-32 32v192c0 12.122 6.848 23.202 17.69 28.622l110.31 55.156v187.886c-116.052-80.956-192-215.432-192-367.664 0-68.714 15.49-133.806 43.138-192h116.862c8.488 0 16.626-3.372 22.628-9.372l128-128c6-6.002 9.372-14.14 9.372-22.628v-77.412c40.562-12.074 83.518-18.588 128-18.588 70.406 0 137.004 16.26 196.282 45.2-4.144 3.502-8.176 7.164-12.046 11.036-36.266 36.264-56.236 84.478-56.236 135.764s19.97 99.5 56.236 135.764c36.434 36.432 85.218 56.264 135.634 56.26 3.166 0 6.342-0.080 9.518-0.236 13.814 51.802 38.752 186.656-8.404 372.334-0.444 1.744-0.696 3.488-0.842 5.224-81.324 83.080-194.7 134.656-320.142 134.656z"
+              ></path>
+            </svg>
+            <span class="trips-text027"><span>България</span></span>
+          </div>
+        </div>
+        <div class="trips-container040 trips-container-price">
+          <span class="trips-text029">Цени от:</span>
+          <span class="trips-text030">460лв</span>
+        </div>
+      </div></a>
+
+      <a class=".reset-a" href="trip-detail.html"><div class="trips-container041">
+        <div class="trips-container042">
+          <div class="trips-container043">
+            <svg viewBox="0 0 1024 1024" class="trips-icon026">
+              <path
+                      d="M256 512v128h512v-128h-512zM342 298v128h128v-128h-128zM682 426v-128h-128v128h128zM854 512v214h-58l-28 84h-42l-28-84h-370l-30 84h-42l-28-84h-58v-214q0-34 26-60t60-26v-128q0-34 26-59t60-25h340q34 0 60 25t26 59v128q34 0 60 26t26 60z"
+              ></path>
+            </svg>
+          </div>
+          <div class="trips-container044">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-restaurant-100-200h.png"
+                    class="trips-image13"
+            />
+          </div>
+          <div class="trips-container045">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-museum-100-200h.png"
+                    class="trips-image14"
+            />
+          </div>
+        </div>
+        <img
+                alt="image"
+                src="public/playground_assets/trip4.jpg"
+                class="trips-image15"
+        />
+        <div class="trips-container046">
+              <span class="trips-text031">
+                <span>
+                  ГРАДЪТ НА МАКЕДОНСКИТЕ ЦАРЕ ХЕРАКЛЕЯ СИНТИКА - ПЕТРИЧ -
+                  САНДАНСКИ
+                </span>
+              </span>
+        </div>
+        <div class="trips-container047">
+          <div class="trips-container048">
+            <svg viewBox="0 0 1088 1024" class="trips-icon028">
+              <path
+                      d="M640 64c247.424 0 448 200.576 448 448s-200.576 448-448 448v-96c94.024 0 182.418-36.614 248.902-103.098s103.098-154.878 103.098-248.902c0-94.022-36.614-182.418-103.098-248.902s-154.878-103.098-248.902-103.098c-94.022 0-182.418 36.614-248.902 103.098-51.14 51.138-84.582 115.246-97.306 184.902h186.208l-224 256-224-256h164.57c31.060-217.102 217.738-384 443.43-384zM832 448v128h-256v-320h128v192z"
+              ></path>
+            </svg>
+            <span class="trips-text033">7 нощувки</span>
+          </div>
+          <div class="trips-container049">
+            <svg viewBox="0 0 950.8571428571428 1024" class="trips-icon030">
+              <path
+                      d="M73.143 950.857h164.571v-164.571h-164.571v164.571zM274.286 950.857h182.857v-164.571h-182.857v164.571zM73.143 749.714h164.571v-182.857h-164.571v182.857zM274.286 749.714h182.857v-182.857h-182.857v182.857zM73.143 530.286h164.571v-164.571h-164.571v164.571zM493.714 950.857h182.857v-164.571h-182.857v164.571zM274.286 530.286h182.857v-164.571h-182.857v164.571zM713.143 950.857h164.571v-164.571h-164.571v164.571zM493.714 749.714h182.857v-182.857h-182.857v182.857zM292.571 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM713.143 749.714h164.571v-182.857h-164.571v182.857zM493.714 530.286h182.857v-164.571h-182.857v164.571zM713.143 530.286h164.571v-164.571h-164.571v164.571zM731.429 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM950.857 219.429v731.429c0 40-33.143 73.143-73.143 73.143h-804.571c-40 0-73.143-33.143-73.143-73.143v-731.429c0-40 33.143-73.143 73.143-73.143h73.143v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h219.429v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h73.143c40 0 73.143 33.143 73.143 73.143z"
+              ></path>
+            </svg>
+            <span class="trips-text034">Юни, Юли, Август, Септември</span>
+          </div>
+          <div class="trips-container050">
+            <svg viewBox="0 0 1024 1024" class="trips-icon032">
+              <path
+                      d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 960.002c-62.958 0-122.872-13.012-177.23-36.452l233.148-262.29c5.206-5.858 8.082-13.422 8.082-21.26v-96c0-17.674-14.326-32-32-32-112.99 0-232.204-117.462-233.374-118.626-6-6.002-14.14-9.374-22.626-9.374h-128c-17.672 0-32 14.328-32 32v192c0 12.122 6.848 23.202 17.69 28.622l110.31 55.156v187.886c-116.052-80.956-192-215.432-192-367.664 0-68.714 15.49-133.806 43.138-192h116.862c8.488 0 16.626-3.372 22.628-9.372l128-128c6-6.002 9.372-14.14 9.372-22.628v-77.412c40.562-12.074 83.518-18.588 128-18.588 70.406 0 137.004 16.26 196.282 45.2-4.144 3.502-8.176 7.164-12.046 11.036-36.266 36.264-56.236 84.478-56.236 135.764s19.97 99.5 56.236 135.764c36.434 36.432 85.218 56.264 135.634 56.26 3.166 0 6.342-0.080 9.518-0.236 13.814 51.802 38.752 186.656-8.404 372.334-0.444 1.744-0.696 3.488-0.842 5.224-81.324 83.080-194.7 134.656-320.142 134.656z"
+              ></path>
+            </svg>
+            <span class="trips-text035"><span>България</span></span>
+          </div>
+        </div>
+        <div class=" trips-container-price">
+          <span class="trips-text037">Цени от:</span>
+          <span class="trips-text038">460лв</span>
+        </div>
+      </div></a>
+
+      <a class=".reset-a" href="trip-detail.html"><div class="trips-container052">
+        <div class="trips-container053">
+          <div class="trips-container054">
+            <svg viewBox="0 0 1024 1024" class="trips-icon034">
+              <path
+                      d="M256 512v128h512v-128h-512zM342 298v128h128v-128h-128zM682 426v-128h-128v128h128zM854 512v214h-58l-28 84h-42l-28-84h-370l-30 84h-42l-28-84h-58v-214q0-34 26-60t60-26v-128q0-34 26-59t60-25h340q34 0 60 25t26 59v128q34 0 60 26t26 60z"
+              ></path>
+            </svg>
+          </div>
+          <div class="trips-container055">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-restaurant-100-200h.png"
+                    class="trips-image16"
+            />
+          </div>
+          <div class="trips-container056">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-museum-100-200h.png"
+                    class="trips-image17"
+            />
+          </div>
+        </div>
+        <img
+                alt="image"
+                src="public/playground_assets/trip3.jpg"
+                class="trips-image18"
+        />
+        <div class="trips-container057">
+              <span class="trips-text039">
+                <span>
+                  ГРАДЪТ НА МАКЕДОНСКИТЕ ЦАРЕ ХЕРАКЛЕЯ СИНТИКА - ПЕТРИЧ -
+                  САНДАНСКИ
+                </span>
+              </span>
+        </div>
+        <div class="trips-container058">
+          <div class="trips-container059">
+            <svg viewBox="0 0 1088 1024" class="trips-icon036">
+              <path
+                      d="M640 64c247.424 0 448 200.576 448 448s-200.576 448-448 448v-96c94.024 0 182.418-36.614 248.902-103.098s103.098-154.878 103.098-248.902c0-94.022-36.614-182.418-103.098-248.902s-154.878-103.098-248.902-103.098c-94.022 0-182.418 36.614-248.902 103.098-51.14 51.138-84.582 115.246-97.306 184.902h186.208l-224 256-224-256h164.57c31.060-217.102 217.738-384 443.43-384zM832 448v128h-256v-320h128v192z"
+              ></path>
+            </svg>
+            <span class="trips-text041">7 нощувки</span>
+          </div>
+          <div class="trips-container060">
+            <svg viewBox="0 0 950.8571428571428 1024" class="trips-icon038">
+              <path
+                      d="M73.143 950.857h164.571v-164.571h-164.571v164.571zM274.286 950.857h182.857v-164.571h-182.857v164.571zM73.143 749.714h164.571v-182.857h-164.571v182.857zM274.286 749.714h182.857v-182.857h-182.857v182.857zM73.143 530.286h164.571v-164.571h-164.571v164.571zM493.714 950.857h182.857v-164.571h-182.857v164.571zM274.286 530.286h182.857v-164.571h-182.857v164.571zM713.143 950.857h164.571v-164.571h-164.571v164.571zM493.714 749.714h182.857v-182.857h-182.857v182.857zM292.571 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM713.143 749.714h164.571v-182.857h-164.571v182.857zM493.714 530.286h182.857v-164.571h-182.857v164.571zM713.143 530.286h164.571v-164.571h-164.571v164.571zM731.429 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM950.857 219.429v731.429c0 40-33.143 73.143-73.143 73.143h-804.571c-40 0-73.143-33.143-73.143-73.143v-731.429c0-40 33.143-73.143 73.143-73.143h73.143v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h219.429v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h73.143c40 0 73.143 33.143 73.143 73.143z"
+              ></path>
+            </svg>
+            <span class="trips-text042">Юни, Юли, Август, Септември</span>
+          </div>
+          <div class="trips-container061">
+            <svg viewBox="0 0 1024 1024" class="trips-icon040">
+              <path
+                      d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 960.002c-62.958 0-122.872-13.012-177.23-36.452l233.148-262.29c5.206-5.858 8.082-13.422 8.082-21.26v-96c0-17.674-14.326-32-32-32-112.99 0-232.204-117.462-233.374-118.626-6-6.002-14.14-9.374-22.626-9.374h-128c-17.672 0-32 14.328-32 32v192c0 12.122 6.848 23.202 17.69 28.622l110.31 55.156v187.886c-116.052-80.956-192-215.432-192-367.664 0-68.714 15.49-133.806 43.138-192h116.862c8.488 0 16.626-3.372 22.628-9.372l128-128c6-6.002 9.372-14.14 9.372-22.628v-77.412c40.562-12.074 83.518-18.588 128-18.588 70.406 0 137.004 16.26 196.282 45.2-4.144 3.502-8.176 7.164-12.046 11.036-36.266 36.264-56.236 84.478-56.236 135.764s19.97 99.5 56.236 135.764c36.434 36.432 85.218 56.264 135.634 56.26 3.166 0 6.342-0.080 9.518-0.236 13.814 51.802 38.752 186.656-8.404 372.334-0.444 1.744-0.696 3.488-0.842 5.224-81.324 83.080-194.7 134.656-320.142 134.656z"
+              ></path>
+            </svg>
+            <span class="trips-text043"><span>България</span></span>
+          </div>
+        </div>
+        <div class="trips-container-price">
+          <span class="trips-text045">Цени от:</span>
+          <span class="trips-text046">460лв</span>
+        </div>
+      </div></a>
+
+      <a class=".reset-a" href="trip-detail.html"><div class="trips-container063">
+        <div class="trips-container064">
+          <div class="trips-container065">
+            <svg viewBox="0 0 1024 1024" class="trips-icon042">
+              <path
+                      d="M256 512v128h512v-128h-512zM342 298v128h128v-128h-128zM682 426v-128h-128v128h128zM854 512v214h-58l-28 84h-42l-28-84h-370l-30 84h-42l-28-84h-58v-214q0-34 26-60t60-26v-128q0-34 26-59t60-25h340q34 0 60 25t26 59v128q34 0 60 26t26 60z"
+              ></path>
+            </svg>
+          </div>
+          <div class="trips-container066">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-restaurant-100-200h.png"
+                    class="trips-image19"
+            />
+          </div>
+          <div class="trips-container067">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-museum-100-200h.png"
+                    class="trips-image20"
+            />
+          </div>
+        </div>
+        <img
+                alt="image"
+                src="public/playground_assets/trip2.jpg"
+                class="trips-image21"
+        />
+        <div class="trips-container068">
+              <span class="trips-text047">
+                <span>
+                  ГРАДЪТ НА МАКЕДОНСКИТЕ ЦАРЕ ХЕРАКЛЕЯ СИНТИКА - ПЕТРИЧ -
+                  САНДАНСКИ
+                </span>
+              </span>
+        </div>
+        <div class="trips-container069">
+          <div class="trips-container070">
+            <svg viewBox="0 0 1088 1024" class="trips-icon044">
+              <path
+                      d="M640 64c247.424 0 448 200.576 448 448s-200.576 448-448 448v-96c94.024 0 182.418-36.614 248.902-103.098s103.098-154.878 103.098-248.902c0-94.022-36.614-182.418-103.098-248.902s-154.878-103.098-248.902-103.098c-94.022 0-182.418 36.614-248.902 103.098-51.14 51.138-84.582 115.246-97.306 184.902h186.208l-224 256-224-256h164.57c31.060-217.102 217.738-384 443.43-384zM832 448v128h-256v-320h128v192z"
+              ></path>
+            </svg>
+            <span class="trips-text049">7 нощувки</span>
+          </div>
+          <div class="trips-container071">
+            <svg viewBox="0 0 950.8571428571428 1024" class="trips-icon046">
+              <path
+                      d="M73.143 950.857h164.571v-164.571h-164.571v164.571zM274.286 950.857h182.857v-164.571h-182.857v164.571zM73.143 749.714h164.571v-182.857h-164.571v182.857zM274.286 749.714h182.857v-182.857h-182.857v182.857zM73.143 530.286h164.571v-164.571h-164.571v164.571zM493.714 950.857h182.857v-164.571h-182.857v164.571zM274.286 530.286h182.857v-164.571h-182.857v164.571zM713.143 950.857h164.571v-164.571h-164.571v164.571zM493.714 749.714h182.857v-182.857h-182.857v182.857zM292.571 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM713.143 749.714h164.571v-182.857h-164.571v182.857zM493.714 530.286h182.857v-164.571h-182.857v164.571zM713.143 530.286h164.571v-164.571h-164.571v164.571zM731.429 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM950.857 219.429v731.429c0 40-33.143 73.143-73.143 73.143h-804.571c-40 0-73.143-33.143-73.143-73.143v-731.429c0-40 33.143-73.143 73.143-73.143h73.143v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h219.429v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h73.143c40 0 73.143 33.143 73.143 73.143z"
+              ></path>
+            </svg>
+            <span class="trips-text050">Юни, Юли, Август, Септември</span>
+          </div>
+          <div class="trips-container072">
+            <svg viewBox="0 0 1024 1024" class="trips-icon048">
+              <path
+                      d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 960.002c-62.958 0-122.872-13.012-177.23-36.452l233.148-262.29c5.206-5.858 8.082-13.422 8.082-21.26v-96c0-17.674-14.326-32-32-32-112.99 0-232.204-117.462-233.374-118.626-6-6.002-14.14-9.374-22.626-9.374h-128c-17.672 0-32 14.328-32 32v192c0 12.122 6.848 23.202 17.69 28.622l110.31 55.156v187.886c-116.052-80.956-192-215.432-192-367.664 0-68.714 15.49-133.806 43.138-192h116.862c8.488 0 16.626-3.372 22.628-9.372l128-128c6-6.002 9.372-14.14 9.372-22.628v-77.412c40.562-12.074 83.518-18.588 128-18.588 70.406 0 137.004 16.26 196.282 45.2-4.144 3.502-8.176 7.164-12.046 11.036-36.266 36.264-56.236 84.478-56.236 135.764s19.97 99.5 56.236 135.764c36.434 36.432 85.218 56.264 135.634 56.26 3.166 0 6.342-0.080 9.518-0.236 13.814 51.802 38.752 186.656-8.404 372.334-0.444 1.744-0.696 3.488-0.842 5.224-81.324 83.080-194.7 134.656-320.142 134.656z"
+              ></path>
+            </svg>
+            <span class="trips-text051"><span>България</span></span>
+          </div>
+        </div>
+        <div class="trips-container-price">
+          <span class="trips-text053">Цени от:</span>
+          <span class="trips-text054">460лв</span>
+        </div>
+      </div></a>
+
+      <a class=".reset-a" href="trip-detail.html"><div class="trips-container074">
+        <div class="trips-container075">
+          <div class="trips-container076">
+            <svg viewBox="0 0 1024 1024" class="trips-icon050">
+              <path
+                      d="M256 512v128h512v-128h-512zM342 298v128h128v-128h-128zM682 426v-128h-128v128h128zM854 512v214h-58l-28 84h-42l-28-84h-370l-30 84h-42l-28-84h-58v-214q0-34 26-60t60-26v-128q0-34 26-59t60-25h340q34 0 60 25t26 59v128q34 0 60 26t26 60z"
+              ></path>
+            </svg>
+          </div>
+          <div class="trips-container077">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-restaurant-100-200h.png"
+                    class="trips-image22"
+            />
+          </div>
+          <div class="trips-container078">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-museum-100-200h.png"
+                    class="trips-image23"
+            />
+          </div>
+        </div>
+        <img
+                alt="image"
+                src="public/playground_assets/trip1.jpg"
+                class="trips-image24"
+        />
+        <div class="trips-container079">
+              <span class="trips-text055">
+                <span>
+                  ГРАДЪТ НА МАКЕДОНСКИТЕ ЦАРЕ ХЕРАКЛЕЯ СИНТИКА - ПЕТРИЧ -
+                  САНДАНСКИ
+                </span>
+              </span>
+        </div>
+        <div class="trips-container080">
+          <div class="trips-container081">
+            <svg viewBox="0 0 1088 1024" class="trips-icon052">
+              <path
+                      d="M640 64c247.424 0 448 200.576 448 448s-200.576 448-448 448v-96c94.024 0 182.418-36.614 248.902-103.098s103.098-154.878 103.098-248.902c0-94.022-36.614-182.418-103.098-248.902s-154.878-103.098-248.902-103.098c-94.022 0-182.418 36.614-248.902 103.098-51.14 51.138-84.582 115.246-97.306 184.902h186.208l-224 256-224-256h164.57c31.060-217.102 217.738-384 443.43-384zM832 448v128h-256v-320h128v192z"
+              ></path>
+            </svg>
+            <span class="trips-text057">7 нощувки</span>
+          </div>
+          <div class="trips-container082">
+            <svg viewBox="0 0 950.8571428571428 1024" class="trips-icon054">
+              <path
+                      d="M73.143 950.857h164.571v-164.571h-164.571v164.571zM274.286 950.857h182.857v-164.571h-182.857v164.571zM73.143 749.714h164.571v-182.857h-164.571v182.857zM274.286 749.714h182.857v-182.857h-182.857v182.857zM73.143 530.286h164.571v-164.571h-164.571v164.571zM493.714 950.857h182.857v-164.571h-182.857v164.571zM274.286 530.286h182.857v-164.571h-182.857v164.571zM713.143 950.857h164.571v-164.571h-164.571v164.571zM493.714 749.714h182.857v-182.857h-182.857v182.857zM292.571 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM713.143 749.714h164.571v-182.857h-164.571v182.857zM493.714 530.286h182.857v-164.571h-182.857v164.571zM713.143 530.286h164.571v-164.571h-164.571v164.571zM731.429 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM950.857 219.429v731.429c0 40-33.143 73.143-73.143 73.143h-804.571c-40 0-73.143-33.143-73.143-73.143v-731.429c0-40 33.143-73.143 73.143-73.143h73.143v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h219.429v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h73.143c40 0 73.143 33.143 73.143 73.143z"
+              ></path>
+            </svg>
+            <span class="trips-text058">Юни, Юли, Август, Септември</span>
+          </div>
+          <div class="trips-container083">
+            <svg viewBox="0 0 1024 1024" class="trips-icon056">
+              <path
+                      d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 960.002c-62.958 0-122.872-13.012-177.23-36.452l233.148-262.29c5.206-5.858 8.082-13.422 8.082-21.26v-96c0-17.674-14.326-32-32-32-112.99 0-232.204-117.462-233.374-118.626-6-6.002-14.14-9.374-22.626-9.374h-128c-17.672 0-32 14.328-32 32v192c0 12.122 6.848 23.202 17.69 28.622l110.31 55.156v187.886c-116.052-80.956-192-215.432-192-367.664 0-68.714 15.49-133.806 43.138-192h116.862c8.488 0 16.626-3.372 22.628-9.372l128-128c6-6.002 9.372-14.14 9.372-22.628v-77.412c40.562-12.074 83.518-18.588 128-18.588 70.406 0 137.004 16.26 196.282 45.2-4.144 3.502-8.176 7.164-12.046 11.036-36.266 36.264-56.236 84.478-56.236 135.764s19.97 99.5 56.236 135.764c36.434 36.432 85.218 56.264 135.634 56.26 3.166 0 6.342-0.080 9.518-0.236 13.814 51.802 38.752 186.656-8.404 372.334-0.444 1.744-0.696 3.488-0.842 5.224-81.324 83.080-194.7 134.656-320.142 134.656z"
+              ></path>
+            </svg>
+            <span class="trips-text059"><span>България</span></span>
+          </div>
+        </div>
+        <div class="trips-container-price">
+          <span class="trips-text061">Цени от:</span>
+          <span class="trips-text062">460лв</span>
+        </div>
+      </div></a>
+
+      <a class=".reset-a" href="trip-detail.html"><div class="trips-container085">
+        <div class="trips-container086">
+          <div class="trips-container087">
+            <svg viewBox="0 0 1024 1024" class="trips-icon058">
+              <path
+                      d="M256 512v128h512v-128h-512zM342 298v128h128v-128h-128zM682 426v-128h-128v128h128zM854 512v214h-58l-28 84h-42l-28-84h-370l-30 84h-42l-28-84h-58v-214q0-34 26-60t60-26v-128q0-34 26-59t60-25h340q34 0 60 25t26 59v128q34 0 60 26t26 60z"
+              ></path>
+            </svg>
+          </div>
+          <div class="trips-container088">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-restaurant-100-200h.png"
+                    class="trips-image25"
+            />
+          </div>
+          <div class="trips-container089">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-museum-100-200h.png"
+                    class="trips-image26"
+            />
+          </div>
+        </div>
+        <img
+                alt="image"
+                src="public/playground_assets/trip5.jpg"
+                class="trips-image27"
+        />
+        <div class="trips-container090">
+              <span class="trips-text063">
+                <span>
+                  ГРАДЪТ НА МАКЕДОНСКИТЕ ЦАРЕ ХЕРАКЛЕЯ СИНТИКА - ПЕТРИЧ -
+                  САНДАНСКИ
+                </span>
+              </span>
+        </div>
+        <div class="trips-container091">
+          <div class="trips-container092">
+            <svg viewBox="0 0 1088 1024" class="trips-icon060">
+              <path
+                      d="M640 64c247.424 0 448 200.576 448 448s-200.576 448-448 448v-96c94.024 0 182.418-36.614 248.902-103.098s103.098-154.878 103.098-248.902c0-94.022-36.614-182.418-103.098-248.902s-154.878-103.098-248.902-103.098c-94.022 0-182.418 36.614-248.902 103.098-51.14 51.138-84.582 115.246-97.306 184.902h186.208l-224 256-224-256h164.57c31.060-217.102 217.738-384 443.43-384zM832 448v128h-256v-320h128v192z"
+              ></path>
+            </svg>
+            <span class="trips-text065">7 нощувки</span>
+          </div>
+          <div class="trips-container093">
+            <svg viewBox="0 0 950.8571428571428 1024" class="trips-icon062">
+              <path
+                      d="M73.143 950.857h164.571v-164.571h-164.571v164.571zM274.286 950.857h182.857v-164.571h-182.857v164.571zM73.143 749.714h164.571v-182.857h-164.571v182.857zM274.286 749.714h182.857v-182.857h-182.857v182.857zM73.143 530.286h164.571v-164.571h-164.571v164.571zM493.714 950.857h182.857v-164.571h-182.857v164.571zM274.286 530.286h182.857v-164.571h-182.857v164.571zM713.143 950.857h164.571v-164.571h-164.571v164.571zM493.714 749.714h182.857v-182.857h-182.857v182.857zM292.571 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM713.143 749.714h164.571v-182.857h-164.571v182.857zM493.714 530.286h182.857v-164.571h-182.857v164.571zM713.143 530.286h164.571v-164.571h-164.571v164.571zM731.429 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM950.857 219.429v731.429c0 40-33.143 73.143-73.143 73.143h-804.571c-40 0-73.143-33.143-73.143-73.143v-731.429c0-40 33.143-73.143 73.143-73.143h73.143v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h219.429v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h73.143c40 0 73.143 33.143 73.143 73.143z"
+              ></path>
+            </svg>
+            <span class="trips-text066">Юни, Юли, Август, Септември</span>
+          </div>
+          <div class="trips-container094">
+            <svg viewBox="0 0 1024 1024" class="trips-icon064">
+              <path
+                      d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 960.002c-62.958 0-122.872-13.012-177.23-36.452l233.148-262.29c5.206-5.858 8.082-13.422 8.082-21.26v-96c0-17.674-14.326-32-32-32-112.99 0-232.204-117.462-233.374-118.626-6-6.002-14.14-9.374-22.626-9.374h-128c-17.672 0-32 14.328-32 32v192c0 12.122 6.848 23.202 17.69 28.622l110.31 55.156v187.886c-116.052-80.956-192-215.432-192-367.664 0-68.714 15.49-133.806 43.138-192h116.862c8.488 0 16.626-3.372 22.628-9.372l128-128c6-6.002 9.372-14.14 9.372-22.628v-77.412c40.562-12.074 83.518-18.588 128-18.588 70.406 0 137.004 16.26 196.282 45.2-4.144 3.502-8.176 7.164-12.046 11.036-36.266 36.264-56.236 84.478-56.236 135.764s19.97 99.5 56.236 135.764c36.434 36.432 85.218 56.264 135.634 56.26 3.166 0 6.342-0.080 9.518-0.236 13.814 51.802 38.752 186.656-8.404 372.334-0.444 1.744-0.696 3.488-0.842 5.224-81.324 83.080-194.7 134.656-320.142 134.656z"
+              ></path>
+            </svg>
+            <span class="trips-text067"><span>България</span></span>
+          </div>
+        </div>
+        <div class="trips-container-price">
+          <span class="trips-text069">Цени от:</span>
+          <span class="trips-text070">460лв</span>
+        </div>
+      </div></a>
+
+      <a class=".reset-a" href="trip-detail.html"><div class="trips-container096">
+        <div class="trips-container097">
+          <div class="trips-container098">
+            <svg viewBox="0 0 1024 1024" class="trips-icon066">
+              <path
+                      d="M256 512v128h512v-128h-512zM342 298v128h128v-128h-128zM682 426v-128h-128v128h128zM854 512v214h-58l-28 84h-42l-28-84h-370l-30 84h-42l-28-84h-58v-214q0-34 26-60t60-26v-128q0-34 26-59t60-25h340q34 0 60 25t26 59v128q34 0 60 26t26 60z"
+              ></path>
+            </svg>
+          </div>
+          <div class="trips-container099">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-restaurant-100-200h.png"
+                    class="trips-image28"
+            />
+          </div>
+          <div class="trips-container100">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-museum-100-200h.png"
+                    class="trips-image29"
+            />
+          </div>
+        </div>
+        <img
+                alt="image"
+                src="public/playground_assets/trip4.jpg"
+                class="trips-image30"
+        />
+        <div class="trips-container101">
+              <span class="trips-text071">
+                <span>
+                  ГРАДЪТ НА МАКЕДОНСКИТЕ ЦАРЕ ХЕРАКЛЕЯ СИНТИКА - ПЕТРИЧ -
+                  САНДАНСКИ
+                </span>
+              </span>
+        </div>
+        <div class="trips-container102">
+          <div class="trips-container103">
+            <svg viewBox="0 0 1088 1024" class="trips-icon068">
+              <path
+                      d="M640 64c247.424 0 448 200.576 448 448s-200.576 448-448 448v-96c94.024 0 182.418-36.614 248.902-103.098s103.098-154.878 103.098-248.902c0-94.022-36.614-182.418-103.098-248.902s-154.878-103.098-248.902-103.098c-94.022 0-182.418 36.614-248.902 103.098-51.14 51.138-84.582 115.246-97.306 184.902h186.208l-224 256-224-256h164.57c31.060-217.102 217.738-384 443.43-384zM832 448v128h-256v-320h128v192z"
+              ></path>
+            </svg>
+            <span class="trips-text073">7 нощувки</span>
+          </div>
+          <div class="trips-container104">
+            <svg viewBox="0 0 950.8571428571428 1024" class="trips-icon070">
+              <path
+                      d="M73.143 950.857h164.571v-164.571h-164.571v164.571zM274.286 950.857h182.857v-164.571h-182.857v164.571zM73.143 749.714h164.571v-182.857h-164.571v182.857zM274.286 749.714h182.857v-182.857h-182.857v182.857zM73.143 530.286h164.571v-164.571h-164.571v164.571zM493.714 950.857h182.857v-164.571h-182.857v164.571zM274.286 530.286h182.857v-164.571h-182.857v164.571zM713.143 950.857h164.571v-164.571h-164.571v164.571zM493.714 749.714h182.857v-182.857h-182.857v182.857zM292.571 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM713.143 749.714h164.571v-182.857h-164.571v182.857zM493.714 530.286h182.857v-164.571h-182.857v164.571zM713.143 530.286h164.571v-164.571h-164.571v164.571zM731.429 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM950.857 219.429v731.429c0 40-33.143 73.143-73.143 73.143h-804.571c-40 0-73.143-33.143-73.143-73.143v-731.429c0-40 33.143-73.143 73.143-73.143h73.143v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h219.429v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h73.143c40 0 73.143 33.143 73.143 73.143z"
+              ></path>
+            </svg>
+            <span class="trips-text074">Юни, Юли, Август, Септември</span>
+          </div>
+          <div class="trips-container105">
+            <svg viewBox="0 0 1024 1024" class="trips-icon072">
+              <path
+                      d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 960.002c-62.958 0-122.872-13.012-177.23-36.452l233.148-262.29c5.206-5.858 8.082-13.422 8.082-21.26v-96c0-17.674-14.326-32-32-32-112.99 0-232.204-117.462-233.374-118.626-6-6.002-14.14-9.374-22.626-9.374h-128c-17.672 0-32 14.328-32 32v192c0 12.122 6.848 23.202 17.69 28.622l110.31 55.156v187.886c-116.052-80.956-192-215.432-192-367.664 0-68.714 15.49-133.806 43.138-192h116.862c8.488 0 16.626-3.372 22.628-9.372l128-128c6-6.002 9.372-14.14 9.372-22.628v-77.412c40.562-12.074 83.518-18.588 128-18.588 70.406 0 137.004 16.26 196.282 45.2-4.144 3.502-8.176 7.164-12.046 11.036-36.266 36.264-56.236 84.478-56.236 135.764s19.97 99.5 56.236 135.764c36.434 36.432 85.218 56.264 135.634 56.26 3.166 0 6.342-0.080 9.518-0.236 13.814 51.802 38.752 186.656-8.404 372.334-0.444 1.744-0.696 3.488-0.842 5.224-81.324 83.080-194.7 134.656-320.142 134.656z"
+              ></path>
+            </svg>
+            <span class="trips-text075"><span>България</span></span>
+          </div>
+        </div>
+        <div class="trips-container-price">
+          <span class="trips-text077">Цени от:</span>
+          <span class="trips-text078">460лв</span>
+        </div>
+      </div></a>
+
+      <a class=".reset-a" href="trip-detail.html"><div class="trips-container107">
+        <div class="trips-container108">
+          <div class="trips-container109">
+            <svg viewBox="0 0 1024 1024" class="trips-icon074">
+              <path
+                      d="M256 512v128h512v-128h-512zM342 298v128h128v-128h-128zM682 426v-128h-128v128h128zM854 512v214h-58l-28 84h-42l-28-84h-370l-30 84h-42l-28-84h-58v-214q0-34 26-60t60-26v-128q0-34 26-59t60-25h340q34 0 60 25t26 59v128q34 0 60 26t26 60z"
+              ></path>
+            </svg>
+          </div>
+          <div class="trips-container110">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-restaurant-100-200h.png"
+                    class="trips-image31"
+            />
+          </div>
+          <div class="trips-container111">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-museum-100-200h.png"
+                    class="trips-image32"
+            />
+          </div>
+        </div>
+        <img
+                alt="image"
+                src="public/playground_assets/trip3.jpg"
+                class="trips-image33"
+        />
+        <div class="trips-container112">
+              <span class="trips-text079">
+                <span>
+                  ГРАДЪТ НА МАКЕДОНСКИТЕ ЦАРЕ ХЕРАКЛЕЯ СИНТИКА - ПЕТРИЧ -
+                  САНДАНСКИ
+                </span>
+              </span>
+        </div>
+        <div class="trips-container113">
+          <div class="trips-container114">
+            <svg viewBox="0 0 1088 1024" class="trips-icon076">
+              <path
+                      d="M640 64c247.424 0 448 200.576 448 448s-200.576 448-448 448v-96c94.024 0 182.418-36.614 248.902-103.098s103.098-154.878 103.098-248.902c0-94.022-36.614-182.418-103.098-248.902s-154.878-103.098-248.902-103.098c-94.022 0-182.418 36.614-248.902 103.098-51.14 51.138-84.582 115.246-97.306 184.902h186.208l-224 256-224-256h164.57c31.060-217.102 217.738-384 443.43-384zM832 448v128h-256v-320h128v192z"
+              ></path>
+            </svg>
+            <span class="trips-text081">7 нощувки</span>
+          </div>
+          <div class="trips-container115">
+            <svg viewBox="0 0 950.8571428571428 1024" class="trips-icon078">
+              <path
+                      d="M73.143 950.857h164.571v-164.571h-164.571v164.571zM274.286 950.857h182.857v-164.571h-182.857v164.571zM73.143 749.714h164.571v-182.857h-164.571v182.857zM274.286 749.714h182.857v-182.857h-182.857v182.857zM73.143 530.286h164.571v-164.571h-164.571v164.571zM493.714 950.857h182.857v-164.571h-182.857v164.571zM274.286 530.286h182.857v-164.571h-182.857v164.571zM713.143 950.857h164.571v-164.571h-164.571v164.571zM493.714 749.714h182.857v-182.857h-182.857v182.857zM292.571 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM713.143 749.714h164.571v-182.857h-164.571v182.857zM493.714 530.286h182.857v-164.571h-182.857v164.571zM713.143 530.286h164.571v-164.571h-164.571v164.571zM731.429 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM950.857 219.429v731.429c0 40-33.143 73.143-73.143 73.143h-804.571c-40 0-73.143-33.143-73.143-73.143v-731.429c0-40 33.143-73.143 73.143-73.143h73.143v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h219.429v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h73.143c40 0 73.143 33.143 73.143 73.143z"
+              ></path>
+            </svg>
+            <span class="trips-text082">Юни, Юли, Август, Септември</span>
+          </div>
+          <div class="trips-container116">
+            <svg viewBox="0 0 1024 1024" class="trips-icon080">
+              <path
+                      d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 960.002c-62.958 0-122.872-13.012-177.23-36.452l233.148-262.29c5.206-5.858 8.082-13.422 8.082-21.26v-96c0-17.674-14.326-32-32-32-112.99 0-232.204-117.462-233.374-118.626-6-6.002-14.14-9.374-22.626-9.374h-128c-17.672 0-32 14.328-32 32v192c0 12.122 6.848 23.202 17.69 28.622l110.31 55.156v187.886c-116.052-80.956-192-215.432-192-367.664 0-68.714 15.49-133.806 43.138-192h116.862c8.488 0 16.626-3.372 22.628-9.372l128-128c6-6.002 9.372-14.14 9.372-22.628v-77.412c40.562-12.074 83.518-18.588 128-18.588 70.406 0 137.004 16.26 196.282 45.2-4.144 3.502-8.176 7.164-12.046 11.036-36.266 36.264-56.236 84.478-56.236 135.764s19.97 99.5 56.236 135.764c36.434 36.432 85.218 56.264 135.634 56.26 3.166 0 6.342-0.080 9.518-0.236 13.814 51.802 38.752 186.656-8.404 372.334-0.444 1.744-0.696 3.488-0.842 5.224-81.324 83.080-194.7 134.656-320.142 134.656z"
+              ></path>
+            </svg>
+            <span class="trips-text083"><span>България</span></span>
+          </div>
+        </div>
+        <div class="trips-container-price">
+          <span class="trips-text085">Цени от:</span>
+          <span class="trips-text086">460лв</span>
+        </div>
+      </div></a>
+
+      <a class=".reset-a" href="trip-detail.html"><div class="trips-container118">
+        <div class="trips-container119">
+          <div class="trips-container120">
+            <svg viewBox="0 0 1024 1024" class="trips-icon082">
+              <path
+                      d="M256 512v128h512v-128h-512zM342 298v128h128v-128h-128zM682 426v-128h-128v128h128zM854 512v214h-58l-28 84h-42l-28-84h-370l-30 84h-42l-28-84h-58v-214q0-34 26-60t60-26v-128q0-34 26-59t60-25h340q34 0 60 25t26 59v128q34 0 60 26t26 60z"
+              ></path>
+            </svg>
+          </div>
+          <div class="trips-container121">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-restaurant-100-200h.png"
+                    class="trips-image34"
+            />
+          </div>
+          <div class="trips-container122">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-museum-100-200h.png"
+                    class="trips-image35"
+            />
+          </div>
+        </div>
+        <img
+                alt="image"
+                src="public/playground_assets/trip2.jpg"
+                class="trips-image36"
+        />
+        <div class="trips-container123">
+              <span class="trips-text087">
+                <span>
+                  ГРАДЪТ НА МАКЕДОНСКИТЕ ЦАРЕ ХЕРАКЛЕЯ СИНТИКА - ПЕТРИЧ -
+                  САНДАНСКИ
+                </span>
+              </span>
+        </div>
+        <div class="trips-container124">
+          <div class="trips-container125">
+            <svg viewBox="0 0 1088 1024" class="trips-icon084">
+              <path
+                      d="M640 64c247.424 0 448 200.576 448 448s-200.576 448-448 448v-96c94.024 0 182.418-36.614 248.902-103.098s103.098-154.878 103.098-248.902c0-94.022-36.614-182.418-103.098-248.902s-154.878-103.098-248.902-103.098c-94.022 0-182.418 36.614-248.902 103.098-51.14 51.138-84.582 115.246-97.306 184.902h186.208l-224 256-224-256h164.57c31.060-217.102 217.738-384 443.43-384zM832 448v128h-256v-320h128v192z"
+              ></path>
+            </svg>
+            <span class="trips-text089">7 нощувки</span>
+          </div>
+          <div class="trips-container126">
+            <svg viewBox="0 0 950.8571428571428 1024" class="trips-icon086">
+              <path
+                      d="M73.143 950.857h164.571v-164.571h-164.571v164.571zM274.286 950.857h182.857v-164.571h-182.857v164.571zM73.143 749.714h164.571v-182.857h-164.571v182.857zM274.286 749.714h182.857v-182.857h-182.857v182.857zM73.143 530.286h164.571v-164.571h-164.571v164.571zM493.714 950.857h182.857v-164.571h-182.857v164.571zM274.286 530.286h182.857v-164.571h-182.857v164.571zM713.143 950.857h164.571v-164.571h-164.571v164.571zM493.714 749.714h182.857v-182.857h-182.857v182.857zM292.571 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM713.143 749.714h164.571v-182.857h-164.571v182.857zM493.714 530.286h182.857v-164.571h-182.857v164.571zM713.143 530.286h164.571v-164.571h-164.571v164.571zM731.429 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM950.857 219.429v731.429c0 40-33.143 73.143-73.143 73.143h-804.571c-40 0-73.143-33.143-73.143-73.143v-731.429c0-40 33.143-73.143 73.143-73.143h73.143v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h219.429v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h73.143c40 0 73.143 33.143 73.143 73.143z"
+              ></path>
+            </svg>
+            <span class="trips-text090">Юни, Юли, Август, Септември</span>
+          </div>
+          <div class="trips-container127">
+            <svg viewBox="0 0 1024 1024" class="trips-icon088">
+              <path
+                      d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 960.002c-62.958 0-122.872-13.012-177.23-36.452l233.148-262.29c5.206-5.858 8.082-13.422 8.082-21.26v-96c0-17.674-14.326-32-32-32-112.99 0-232.204-117.462-233.374-118.626-6-6.002-14.14-9.374-22.626-9.374h-128c-17.672 0-32 14.328-32 32v192c0 12.122 6.848 23.202 17.69 28.622l110.31 55.156v187.886c-116.052-80.956-192-215.432-192-367.664 0-68.714 15.49-133.806 43.138-192h116.862c8.488 0 16.626-3.372 22.628-9.372l128-128c6-6.002 9.372-14.14 9.372-22.628v-77.412c40.562-12.074 83.518-18.588 128-18.588 70.406 0 137.004 16.26 196.282 45.2-4.144 3.502-8.176 7.164-12.046 11.036-36.266 36.264-56.236 84.478-56.236 135.764s19.97 99.5 56.236 135.764c36.434 36.432 85.218 56.264 135.634 56.26 3.166 0 6.342-0.080 9.518-0.236 13.814 51.802 38.752 186.656-8.404 372.334-0.444 1.744-0.696 3.488-0.842 5.224-81.324 83.080-194.7 134.656-320.142 134.656z"
+              ></path>
+            </svg>
+            <span class="trips-text091"><span>България</span></span>
+          </div>
+        </div>
+        <div class="trips-container-price">
+          <span class="trips-text093">Цени от:</span>
+          <span class="trips-text094">460лв</span>
+        </div>
+      </div></a>
+
+      <a class=".reset-a" href="trip-detail.html"><div class="trips-container129">
+        <div class="trips-container130">
+          <div class="trips-container131">
+            <svg viewBox="0 0 1024 1024" class="trips-icon090">
+              <path
+                      d="M256 512v128h512v-128h-512zM342 298v128h128v-128h-128zM682 426v-128h-128v128h128zM854 512v214h-58l-28 84h-42l-28-84h-370l-30 84h-42l-28-84h-58v-214q0-34 26-60t60-26v-128q0-34 26-59t60-25h340q34 0 60 25t26 59v128q34 0 60 26t26 60z"
+              ></path>
+            </svg>
+          </div>
+          <div class="trips-container132">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-restaurant-100-200h.png"
+                    class="trips-image37"
+            />
+          </div>
+          <div class="trips-container133">
+            <img
+                    alt="image"
+                    src="public/playground_assets/icons8-museum-100-200h.png"
+                    class="trips-image38"
+            />
+          </div>
+        </div>
+        <img
+                alt="image"
+                src="public/playground_assets/trip1.jpg"
+                class="trips-image39"
+        />
+        <div class="trips-container134">
+              <span class="trips-text095">
+                <span>
+                  ГРАДЪТ НА МАКЕДОНСКИТЕ ЦАРЕ ХЕРАКЛЕЯ СИНТИКА - ПЕТРИЧ -
+                  САНДАНСКИ
+                </span>
+              </span>
+        </div>
+        <div class="trips-container135">
+          <div class="trips-container136">
+            <svg viewBox="0 0 1088 1024" class="trips-icon092">
+              <path
+                      d="M640 64c247.424 0 448 200.576 448 448s-200.576 448-448 448v-96c94.024 0 182.418-36.614 248.902-103.098s103.098-154.878 103.098-248.902c0-94.022-36.614-182.418-103.098-248.902s-154.878-103.098-248.902-103.098c-94.022 0-182.418 36.614-248.902 103.098-51.14 51.138-84.582 115.246-97.306 184.902h186.208l-224 256-224-256h164.57c31.060-217.102 217.738-384 443.43-384zM832 448v128h-256v-320h128v192z"
+              ></path>
+            </svg>
+            <span class="trips-text097">7 нощувки</span>
+          </div>
+          <div class="trips-container137">
+            <svg viewBox="0 0 950.8571428571428 1024" class="trips-icon094">
+              <path
+                      d="M73.143 950.857h164.571v-164.571h-164.571v164.571zM274.286 950.857h182.857v-164.571h-182.857v164.571zM73.143 749.714h164.571v-182.857h-164.571v182.857zM274.286 749.714h182.857v-182.857h-182.857v182.857zM73.143 530.286h164.571v-164.571h-164.571v164.571zM493.714 950.857h182.857v-164.571h-182.857v164.571zM274.286 530.286h182.857v-164.571h-182.857v164.571zM713.143 950.857h164.571v-164.571h-164.571v164.571zM493.714 749.714h182.857v-182.857h-182.857v182.857zM292.571 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM713.143 749.714h164.571v-182.857h-164.571v182.857zM493.714 530.286h182.857v-164.571h-182.857v164.571zM713.143 530.286h164.571v-164.571h-164.571v164.571zM731.429 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM950.857 219.429v731.429c0 40-33.143 73.143-73.143 73.143h-804.571c-40 0-73.143-33.143-73.143-73.143v-731.429c0-40 33.143-73.143 73.143-73.143h73.143v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h219.429v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h73.143c40 0 73.143 33.143 73.143 73.143z"
+              ></path>
+            </svg>
+            <span class="trips-text098">Юни, Юли, Август, Септември</span>
+          </div>
+          <div class="trips-container138">
+            <svg viewBox="0 0 1024 1024" class="trips-icon096">
+              <path
+                      d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 960.002c-62.958 0-122.872-13.012-177.23-36.452l233.148-262.29c5.206-5.858 8.082-13.422 8.082-21.26v-96c0-17.674-14.326-32-32-32-112.99 0-232.204-117.462-233.374-118.626-6-6.002-14.14-9.374-22.626-9.374h-128c-17.672 0-32 14.328-32 32v192c0 12.122 6.848 23.202 17.69 28.622l110.31 55.156v187.886c-116.052-80.956-192-215.432-192-367.664 0-68.714 15.49-133.806 43.138-192h116.862c8.488 0 16.626-3.372 22.628-9.372l128-128c6-6.002 9.372-14.14 9.372-22.628v-77.412c40.562-12.074 83.518-18.588 128-18.588 70.406 0 137.004 16.26 196.282 45.2-4.144 3.502-8.176 7.164-12.046 11.036-36.266 36.264-56.236 84.478-56.236 135.764s19.97 99.5 56.236 135.764c36.434 36.432 85.218 56.264 135.634 56.26 3.166 0 6.342-0.080 9.518-0.236 13.814 51.802 38.752 186.656-8.404 372.334-0.444 1.744-0.696 3.488-0.842 5.224-81.324 83.080-194.7 134.656-320.142 134.656z"
+              ></path>
+            </svg>
+            <span class="trips-text099"><span>България</span></span>
+          </div>
+        </div>
+        <div class="trips-container-price">
+          <span class="trips-text101">Цени от:</span>
+          <span class="trips-text102">460лв</span>
+        </div>
+      </div></a>
+
+    </div>
+    <footer class="trips-footer">
+      <div class="trips-container140">
+        <img
+                alt="logo"
+                src="public/playground_assets/logo-1500h.png"
+                class="trips-image40"
+        />
+        <nav class="trips-nav2">
+          <a href="index.html" class="trips-navlink">Начало</a>
+          <a href="trips.html" class="trips-navlink1">Екскурзии</a>
+          <a href="about.html" class="trips-navlink2">За Нас</a>
+          <a href="contact.html" class="trips-navlink3">Контакти</a>
+          <a href="usloviq.html" class="trips-navlink4">Условия</a>
+        </nav>
+      </div>
+      <div class="trips-separator"></div>
+      <div class="trips-container141">
+        <span class="trips-text103">© 2021 eurotours-bg.com</span>
+        <div class="trips-icon-group1">
+          <svg viewBox="0 0 877.7142857142857 1024" class="trips-icon098">
+            <path
+                    d="M829.143 73.143c26.857 0 48.571 21.714 48.571 48.571v780.571c0 26.857-21.714 48.571-48.571 48.571h-223.429v-340h113.714l17.143-132.571h-130.857v-84.571c0-38.286 10.286-64 65.714-64l69.714-0.571v-118.286c-12-1.714-53.714-5.143-101.714-5.143-101.143 0-170.857 61.714-170.857 174.857v97.714h-114.286v132.571h114.286v340h-420c-26.857 0-48.571-21.714-48.571-48.571v-780.571c0-26.857 21.714-48.571 48.571-48.571h780.571z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+</body>
+</html>
