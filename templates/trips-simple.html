@@ -11,34 +11,32 @@
 <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 <body>
-<h1>TOP TRIPS</h1>
+<h1>ALL TRIPS</h1>
+
+{% if search_box %}
+<h2>You searched for {{ search_box }}</h2>
+{% endif %}
 
 
-<ul>
-{% for trip in top_trips %}
-    <li>
-        <a href="{% url 'trip_details' trip.id %}">{{ trip.name }}</a>
-        {% for category in trip.category.all %}
-            <p>{{ category.id }}</p>
-        {% endfor %}
-        <p>{{ trip.price }}</p>
-        <p>{{ trip.country }}</p>
-        <p>{{ trip.duration }}</p>
-        {% for month in trip.months.all %}
-            <p>{{ month }}</p>
-        {% endfor %}
-
-        {% if 4|category_in:trip.category.all %}
-            <h1>IT WORKED!</h1>
-
-        {% endif %}
-
-
-        <img src="{{ trip.main_image.url }}" alt="" style="height: 200px">
-    </li>
-    {{ trip.text|safe }}
-{% endfor %}
-</ul>
+<div style="display: flex">
+{% if all_trips %}
+    {% for trip in all_trips %}
+        <div style="display: block; margin: 10px; width: 300px">
+            <a href="{% url 'trip_details' trip.id %}"><h1>{{ trip.name }}</h1></a>
+                    <img src="{{ trip.main_image.url }}" alt="" style="height: 150px">
+            <p>{{ trip.category.all }}</p>
+            <p>{{ trip.price }}</p>
+            <p>{{ trip.country }}</p>
+            <p>{{ trip.duration }}</p>
+            <p>{{ trip.months.all }}</p>
+            <hr>
+        {{ trip.text|safe }}
+        </div>
+    {% endfor %}
+{% else %}
+    <h2>Nothing</h2>
+{% endif %}
+</div>
 
 
 </body>

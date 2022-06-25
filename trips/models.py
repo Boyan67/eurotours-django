@@ -1,6 +1,18 @@
 from django.db import models
-from multiselectfield import MultiSelectField
 from tinymce import models as tinymce_models
+from io import BytesIO
+from PIL import Image
+from django.core.files import File
+
+
+# image compression method
+def compress(image):
+    im = Image.open(image)
+    im_io = BytesIO()
+    im.save(im_io, 'JPEG', quality=60)
+    new_image = File(im_io, name=image.name)
+    return new_image
+
 
 month = [('01', 'January'),
          ('02', 'February'),
@@ -50,11 +62,14 @@ class Trip(models.Model):
     months = models.ManyToManyField(Month)
     text = tinymce_models.HTMLField()
 
+    # calling image compression function before saving the data
+    def save(self, *args, **kwargs):
+        new_image = compress(self.main_image)
+        self.main_image = new_image
+        super().save(*args, **kwargs)
 
-class Image(models.Model):
+
+class Picture(models.Model):
     trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, blank=True)
     image = models.ImageField(upload_to='images/')
-
-
-

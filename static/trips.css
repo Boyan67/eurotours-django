@@ -540,16 +540,16 @@
   padding-top: 0px;
   padding-left: 45px;
   padding-right: 45px;
-  justify-content: space-between;
+  justify-content: center;
 }
 .trips-container019 {
   flex: 0 0 auto;
-  width: 19%;
+  width: 17%;
   display: flex;
   flex-wrap: wrap;
   min-width: 150px;
   align-items: center;
-  margin: 10px 0px;
+  margin: 8px 10px 10px 10px;
   flex-direction: column;
   justify-content: center;
 }
@@ -585,12 +585,12 @@
 }
 .trips-container021 {
   flex: 0 0 auto;
-  width: 19%;
+  width: 17%;
   display: flex;
   flex-wrap: wrap;
   min-width: 150px;
   align-items: center;
-  margin: 10px 0px;
+  margin: 10px 10px;
   flex-direction: column;
   justify-content: center;
 }
@@ -625,12 +625,12 @@
 }
 .trips-container023 {
   flex: 0 0 auto;
-  width: 19%;
+  width: 17%;
   display: flex;
   flex-wrap: wrap;
   min-width: 150px;
   align-items: center;
-  margin: 10px 0px;
+  margin: 10px 10px;
   flex-direction: column;
   justify-content: center;
 }
@@ -665,12 +665,12 @@
 }
 .trips-container025 {
   flex: 0 0 auto;
-  width: 19%;
+  width: 17%;
   display: flex;
   flex-wrap: wrap;
   min-width: 150px;
   align-items: center;
-  margin: 10px 0px;
+  margin: 10px 10px;
   flex-direction: column;
   justify-content: center;
 }
@@ -703,12 +703,12 @@
 }
 .trips-container027 {
   flex: 0 0 auto;
-  width: 19%;
+  width: 17%;
   display: flex;
   flex-wrap: wrap;
   min-width: 150px;
   align-items: center;
-  margin: 10px 0px;
+  margin: 10px 10px;
   flex-direction: column;
   justify-content: center;
 }
@@ -745,8 +745,8 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 0;
+  padding-right: 0;
   justify-content: center;
 }
 .trips-container030 {
