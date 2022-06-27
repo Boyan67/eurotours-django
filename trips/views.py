@@ -1,8 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
-
-from .models import Trip, Month
+from .filters import TripFilter
+from .models import Trip, Month, Category
 
 
 def index(request):
@@ -12,32 +12,42 @@ def index(request):
 
 
 def trips(request):
+    search_box = ""
     all_trips = Trip.objects.all()
-    context = {'all_trips': all_trips}
-    return render(request, '../templates/trips.html', context)
+    my_filter = TripFilter(request.GET, queryset=all_trips)
+    all_trips = my_filter.qs
 
-
-def search(request):
     if request.method == "POST":
-        search_box = request.POST.get('search')
+        if request.POST.get('search'):
+            search_box = request.POST.get('search')
+            all_trips = []
+            for i in Trip.objects.all():
+                if search_box.lower() in i.name.lower():
+                    all_trips.append(i)
+                elif search_box.lower() in i.text.lower():
+                    all_trips.append(i)
+        if request.POST.get('month'):
+            month = Month.objects.get(name=request.POST.get('month'))
+            all_trips = Trip.objects.filter(months=month)
+        if request.POST.get('category'):
+            category = Category.objects.get(name=request.POST.get('category'))
+            all_trips = Trip.objects.filter(category=category)
 
-        all_trips = []
-        for i in Trip.objects.all():
-            if search_box.lower() in i.name.lower():
-                all_trips.append(i)
-            elif search_box.lower() in i.text.lower():
-                all_trips.append(i)
-
-        context = {'search_box': search_box, 'all_trips': all_trips}
-        return render(request, '../templates/trips.html', context)
-    else:
-        context = {}
-        return render(request, '../templates/trips.html', context)
+    context = {'all_trips': all_trips, 'my_filter': my_filter, 'search_box': search_box}
+    return render(request, '../templates/trips.html', context)
 
 
 def trip_month(request, month_id):
     month = Month.objects.get(id=month_id)
     all_trips = Trip.objects.filter(months=month)
+
+    if request.method == "GET":
+        all_trips = Trip.objects.all()
+        my_filter = TripFilter(request.GET, queryset=all_trips)
+        all_trips = my_filter.qs
+        context = {'all_trips': all_trips, 'my_filter': my_filter}
+        return render(request, '../templates/trips.html', context)
+
     context = {'all_trips': all_trips, 'month': month}
     return render(request, '../templates/trips.html', context)
 

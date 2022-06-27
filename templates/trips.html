@@ -1,5 +1,6 @@
 {% load static %}
 {% load filters %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -19,7 +20,7 @@
       </style>
       <style data-tag="default-style-sheet">
          html {
-         font-family: Inter;
+             font-family: Inter, serif;
          font-size: 16px;
          }
          body {
@@ -43,13 +44,12 @@
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-      <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
       <link rel="stylesheet" type="text/css" href="{% static 'trips.css' %}">
-
+      <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
    </head>
    <body>
       <div>
-         <link href="./trips.css" rel="stylesheet" />
+         <link rel="stylesheet" type="text/css" href="{% static 'trips.css' %}">
          <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom" style="padding: 10px 30px">
             <a class="navbar-brand" href="#"><img src="public/playground_assets/logo-1500h.png" alt="Евротурс Лого" style="height: 47px"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,8 +57,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="font-size: 17px; font-weight: 600; font-family: Inter,serif;">
                <div class="navbar-nav ml-auto">
-                  <form class="form-inline" method="POST" action="{% url 'search' %}">
-                      {% csrf_token %}
+                  <form class="form-inline" method="POST" action="{% url 'trips' %}">
+                     {% csrf_token %}
                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
                      <button class="btn btn-outline-success my-2 my-sm-0 custom-btn" type="submit"><i class="bi bi-search"></i></button>
                   </form>
@@ -72,13 +72,17 @@
          </nav>
          <div class="trips-container">
             <span class="trips-text">
-            <span class="trips-text001">//</span>
-            <span class="trips-text002"></span>
-            <span class="trips-text003">Всички Екскурзии и Почивки</span>
-
-            <span class="trips-text004"></span>
-            <span class="trips-text005">//</span>
-                {% if month %}<h2>През {{ month }}</h2>{% endif %}
+               <span class="trips-text001">//</span>
+               <span class="trips-text002"></span>
+               <span class="trips-text003">Всички Екскурзии и Почивки</span>
+               <span class="trips-text004"></span>
+               <span class="trips-text005">//</span>
+               {% if month %}
+               <h3>През {{ month }}</h3>
+               {% endif %}
+                {% if search_box %}
+               <h3>За: "{{ search_box }}"</h3>
+               {% endif %}
             </span>
             <div class="trips-container002">
                <img
@@ -88,8 +92,9 @@
                   />
                <span class="trips-text006">Търси по Категория</span>
             </div>
-            <div class="trips-container003">
-               <div class="trips-container004">
+            <form class="trips-container003" method="POST" action="{% url 'trips' %}">
+                {% csrf_token %}
+               <button class="trips-container004" type="submit"  value="Overnight" name="category">
                   <div class="trips-container005">
                      <svg viewBox="0 0 1024 1024" class="trips-icon010">
                         <path
@@ -102,8 +107,9 @@
                   <br />
                   <span></span>
                   </span>
-               </div>
-               <div class="trips-container006">
+               </button>
+
+               <button class="trips-container006" type="submit"  value="Shopping" name="category">
                   <div class="trips-container007">
                      <img
                         alt="image"
@@ -112,8 +118,9 @@
                         />
                   </div>
                   <span class="trips-text010">Пазаруване</span>
-               </div>
-               <div class="trips-container008">
+               </button>
+
+               <button class="trips-container008" type="submit"  value="Food Included" name="category">
                   <div class="trips-container009">
                      <img
                         alt="image"
@@ -122,8 +129,9 @@
                         />
                   </div>
                   <span class="trips-text011">Включена Храна</span>
-               </div>
-               <div class="trips-container010">
+               </button>
+
+               <button class="trips-container010" type="submit"  value="Excursion" name="category">
                   <div class="trips-container011">
                      <img
                         alt="image"
@@ -132,8 +140,9 @@
                         />
                   </div>
                   <span class="trips-text012">Екскурзия</span>
-               </div>
-               <div class="trips-container012">
+               </button>
+
+               <button class="trips-container012" type="submit"  value="Nature" name="category">
                   <div class="trips-container013">
                      <img
                         alt="image"
@@ -146,8 +155,9 @@
                   <br />
                   <span></span>
                   </span>
-               </div>
-               <div class="trips-container014">
+               </button>
+
+               <button class="trips-container014" type="submit"  value="For Students" name="category">
                   <div class="trips-container015">
                      <img
                         alt="image"
@@ -156,8 +166,9 @@
                         />
                   </div>
                   <span class="trips-text016"><span>За Ученици</span></span>
-               </div>
-               <div class="trips-container016">
+               </button>
+
+               <button class="trips-container016" type="submit"  value="Holiday" name="category">
                   <div class="trips-container017">
                      <img
                         alt="image"
@@ -166,30 +177,31 @@
                         />
                   </div>
                   <span class="trips-text018">Почивка</span>
-               </div>
-            </div>
+               </button>
 
 
-                <form class="trips-container018" method="POST" action="{% url 'search' %}">
-                    {% csrf_token %}
-               <div class="trips-container019">
-                  <div class="trips-container020">
+            </form>
+            <form class="trips-container018" method="GET" style="justify-content: center">
+               {% csrf_token %}
+
+
+                {#        TODO: MOBILE VIEW - MAKE PRICE APPEAR NEXT TO EACH OTHER #}
+               <div class="trips-container019 price-div filters">
+                  <div class="trips-container020 price-div-text">
                      <img
                         alt="image"
                         src="{% static 'images/icons8-price-100-200h.png' %}"
-                        class="trips-image09"
-                        />
+                        class="trips-image09"/>
                      <span class="trips-text019">Цена</span>
                   </div>
-                  <select class="trips-select">
-                     <option value="Option 1" selected>Избери Цена</option>
-                     <option value="Option 2">До 50лв</option>
-                     <option value="Option 3">До 100лв</option>
-                     <option value="New Option">До 200лв</option>
-                     <option value="New Option">До 300лв</option>
-                  </select>
+                  <div style="display: flex; align-items: center; flex-wrap: wrap">
+                        {% render_field my_filter.form.price__gt class+="price-gt" %}
+                      <span class="dash">-</span>
+                        {% render_field my_filter.form.price__lt class+="price-lt" %}
+                  </div>
                </div>
-               <div class="trips-container021">
+
+               <div class="trips-container021 filters">
                   <div class="trips-container022">
                      <svg viewBox="0 0 1024 1024" class="trips-icon012">
                         <path
@@ -198,14 +210,12 @@
                      </svg>
                      <span class="trips-text020">Държава</span>
                   </div>
-                  <select class="trips-select1">
-                     <option value="Option 1">Избери Държава</option>
-                     <option value="Option 2">България</option>
-                     <option value="Option 3">Турция</option>
-                     <option value="New Option">Италия</option>
-                  </select>
+                   {% render_field my_filter.form.country class+="country" %}
+
                </div>
-               <div class="trips-container023">
+
+
+               <div class="trips-container023 filters">
                   <div class="trips-container024">
                      <svg viewBox="0 0 950.8571428571428 1024" class="trips-icon014">
                         <path
@@ -214,29 +224,35 @@
                      </svg>
                      <span class="trips-text021">Месец</span>
                   </div>
-                  <select class="trips-select2" name="month">
-                     <option value="">Избери Месец</option>
-                     <option value="1">Януару</option>
-                     <option value="2">Февруари</option>
-                     <option value="New Option">Март</option>
-                     <option value="New Option">Април</option>
-                     <option value="New Option">Май</option>
-                     <option value="New Option">Юни</option>
-                     <option value="New Option">Юли</option>
-                     <option value="New Option">Август</option>
-                  </select>
+                   {% render_field my_filter.form.months class+="month" %}
+
                </div>
+
+{##}
+{#               <div class="trips-container025 filters">#}
+{#                    {% render_field my_filter.form.category id+="checkboxes" %}#}
+{#                    {% for i in my_filter.form.category %}#}
+{#                        <input type="checkbox" class="hidden" name="cb" id="cb">#}
+{#                        <div id="ck-button">#}
+{#                           <label>#}
+{#                               <span></span>{{ i }}#}
+{#                           </label>#}
+{#                        </div>#}
+{##}
+{#                   {% endfor %}#}
+{##}
+{#               </div>#}
+
 
                <div class="trips-container027">
                   <div class="trips-container028"></div>
                   <button class="trips-button button" type="submit" name="month">Tърсене</button>
                </div>
-                </form>
-
+            </form>
             <div class="trips-container029" style="padding: 10px">
                <!--      This is what I need!-->
                <!--      A single trip card-->
-            {% if all_trips %}
+               {% if all_trips %}
                {% for trip in all_trips %}
                <a class=".reset-a" href="trip-detail.html">
                   <div class="home-container05">
@@ -335,9 +351,9 @@
                   </div>
                </a>
                {% endfor %}
-                {% else %}
-                <h3 style="color: #333">Няма Намерени Екскурзии и Почивки...</h3>
-            {% endif %}
+               {% else %}
+               <h3 style="color: #333; margin-bottom: 250px">Няма Намерени Екскурзии и Почивки...</h3>
+               {% endif %}
             </div>
             <footer class="trips-footer">
                <div class="trips-container140">

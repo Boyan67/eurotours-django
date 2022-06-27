@@ -63,7 +63,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="font-size: 17px; font-weight: 600; font-family: Inter,serif;">
                <div class="navbar-nav ml-auto">
-                  <form class="form-inline" method="POST" action="{% url 'search' %}">
+                  <form class="form-inline" method="POST" action="{% url 'trips' %}">
                       {% csrf_token %}
                      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
                      <button class="btn btn-outline-success my-2 my-sm-0 custom-btn" type="submit"><i class="bi bi-search"></i></button>
@@ -85,20 +85,21 @@
             <span>Text</span>
             <div class="home-container02">
                <span class="home-text01">Календар за следващите 12 месеца</span>
-               <div class="home-container03">
-                  <a class="home-button button" href="{% url 'trip_month' 1 %}">Януари</a>
-                  <a class="home-button button" href="{% url 'trip_month' 2 %}">Февруари</a>
-                  <a class="home-button button" href="{% url 'trip_month' 3 %}">Март</a>
-                  <a class="home-button button" href="{% url 'trip_month' 4 %}">Април</a>
-                  <a class="home-button button" href="{% url 'trip_month' 5 %}">Май</a>
-                  <a class="home-button button" href="{% url 'trip_month' 6 %}">Юни</a>
-                  <a class="home-button button" href="{% url 'trip_month' 7 %}">Юли</a>
-                  <a class="home-button button" href="{% url 'trip_month' 8 %}">Август</a>
-                  <a class="home-button button" href="{% url 'trip_month' 9 %}">Септември</a>
-                  <a class="home-button button" href="{% url 'trip_month' 10 %}">Октомври</a>
-                  <a class="home-button button" href="{% url 'trip_month' 11 %}">Ноември</a>
-                  <a class="home-button button" href="{% url 'trip_month' 12 %}">Декември</a>
-               </div>
+               <form class="home-container03" method="POST" action="{% url 'trips' %}">
+                   {% csrf_token %}
+                  <input type="submit" class="home-button button" value="Януари" name="month">
+                  <input type="submit" class="home-button button" value="Февруари" name="month">
+                  <input type="submit" class="home-button button" value="Март" name="month">
+                  <input type="submit" class="home-button button" value="Април" name="month">
+                  <input type="submit" class="home-button button" value="Май" name="month">
+                  <input type="submit" class="home-button button" value="Юни" name="month">
+                  <input type="submit" class="home-button button" value="Юли" name="month">
+                  <input type="submit" class="home-button button" value="Август" name="month">
+                  <input type="submit" class="home-button button" value="Септември" name="month">
+                  <input type="submit" class="home-button button" value="Октомври" name="month">
+                  <input type="submit" class="home-button button" value="Ноември" name="month">
+                  <input type="submit" class="home-button button" value="Декември" name="month">
+               </form>
             </div>
             <span class="home-text02">
             <span class="home-text03">//</span>

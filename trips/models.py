@@ -55,7 +55,7 @@ class Trip(models.Model):
     top_offer = models.BooleanField(default=False)
     name = models.CharField(max_length=200)
     main_image = models.ImageField(upload_to='main_images/')
-    category = models.ManyToManyField(Category, blank=True)
+    category = models.ManyToManyField(Category)
     price = models.DecimalField(decimal_places=2, max_digits=5)
     duration = models.CharField(max_length=50, default="1 нощувка")
     country = models.CharField(max_length=50)
