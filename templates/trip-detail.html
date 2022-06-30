@@ -30,6 +30,14 @@
         background-color: var(--dl-color-gray-white);
 
       }
+      table{
+          border: 2px solid #333;
+      }
+      td{
+          border: 2px solid #9a9a9a;
+          padding: 5px 7px;
+      }
+
     </style>
     <link
             rel="stylesheet"
@@ -69,11 +77,42 @@
       <div class="trip-detail-container">
 
         <div class="trip-detail-container02">
-          <img
-            alt="image"
-            src="{{ trip.main_image.url }}"
-            class="trip-detail-image2"
-          />
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 100%">
+              <ol class="carousel-indicators">
+                <li style="height: 6px;" data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                {% for i in images %}
+                    {% if not forloop.first %}
+                    <li style="height: 6px" data-target="#carouselExampleIndicators" data-slide-to="{{ i.id }}"></li>
+                    {% endif %}
+                {% endfor %}
+              
+              </ol>
+              <div class="carousel-inner" style="width: 100%;">
+                  <div class="carousel-item active" style="width: 100%">
+                          <img class="trip-detail-image2" src="{{ images.0.image.url }}" alt="First slide">
+                        </div>
+                  {% for image in images %}
+                      {% if not forloop.first %}
+                                            <div class="carousel-item" style="width: 100%">
+                          <img class="trip-detail-image2" src="{{ image.image.url }}" alt="First slide">
+                        </div>
+                      {% endif %}
+                  {% endfor %}
+              </div>
+              <a style="background-color: rgba(44,44,44,0.5); width: 110px"  class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a style="background-color: rgba(44,44,44,0.5); width: 110px" class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+{#          <img#}
+{#            alt="image"#}
+{#            src="{{ trip.main_image.url }}"#}
+{#            class="trip-detail-image2"#}
+{#          />#}
           <div class="trip-detail-container03">
             <div class="home-container06">
 

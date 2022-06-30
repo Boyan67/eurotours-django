@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
 from .filters import TripFilter
-from .models import Trip, Month, Category, HomeImage, Condition
+from .models import Trip, Month, Category, HomeImage, Condition, Picture
 
 
 def index(request):
@@ -43,7 +43,10 @@ def trips(request):
 
 def trip_details(request, trip_id):
     trip = Trip.objects.get(id=trip_id)
-    context = {'trip': trip}
+    images = Picture.objects.filter(trip=trip)
+
+    context = {'trip': trip, 'images':images, 'iterateover': range(len(images)-2)}
+    print(range(len(images)-2))
     return render(request, '../templates/trip-detail.html', context)
 
 

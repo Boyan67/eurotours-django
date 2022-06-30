@@ -1,3 +1,4 @@
+import os
 import sys
 
 from django.core.exceptions import ValidationError
@@ -7,6 +8,8 @@ from tinymce import models as tinymce_models
 from io import BytesIO
 from PIL import Image
 from django.core.files import File
+import imghdr
+import tinymce
 from copy import deepcopy
 
 
@@ -18,28 +21,6 @@ def compress(image):
     new_image = File(im_io, name=image.name)
     return new_image
 
-
-month = [('01', 'January'),
-         ('02', 'February'),
-         ('03', 'March'),
-         ('04', 'April'),
-         ('05', 'May'),
-         ('06', 'June'),
-         ('07', 'July'),
-         ('08', 'August'),
-         ('09', 'September'),
-         ('10', 'October'),
-         ('11', 'November'),
-         ('12', 'December')]
-
-categories = [
-    ('overnight', 'Overnight'),
-    ('shopping', 'Shopping'),
-    ('food included', 'Food Included'),
-    ('excursion', 'Excursion'),
-    ('for students', 'For Students'),
-    ('holiday', 'Holiday')
-]
 
 
 class Category(models.Model):
@@ -57,22 +38,27 @@ class Month(models.Model):
 
 
 class Trip(models.Model):
-    top_offer = models.BooleanField(default=False)
-    name = models.CharField(max_length=200)
-    main_image = models.ImageField(upload_to='main_images/')
-    category = models.ManyToManyField(Category)
-    price = models.DecimalField(decimal_places=2, max_digits=5)
-    duration = models.CharField(max_length=50, default="1 нощувка")
-    country = models.CharField(max_length=50)
-    months = models.ManyToManyField(Month)
-    text = tinymce_models.HTMLField()
+    top_offer = models.BooleanField(default=False, verbose_name="Топ Оферта")
+    name = models.CharField(max_length=200, verbose_name="Име")
+    main_image = models.ImageField(upload_to='main_images/', verbose_name="Главна Снимка")
+    category = models.ManyToManyField(Category, verbose_name="Категории")
+    price = models.IntegerField(verbose_name="Цена")
+    duration = models.CharField(max_length=50, default="1 нощувка", verbose_name="Пордължителнот")
+    country = models.CharField(max_length=50, verbose_name="Държава")
+    months = models.ManyToManyField(Month, verbose_name="През Месеци:")
+    text = tinymce_models.HTMLField(verbose_name="Текст")
 
     def save(self, *args, **kwargs):
         im = Image.open(self.main_image)
         im_io = BytesIO()
         im.save(im_io, 'JPEG', quality=50)
-        self.main_image = InMemoryUploadedFile(im_io, 'ImageField', "%s.jpg" % self.main_image.name.split('.')[0],
-                                               'main_images/', sys.getsizeof(im_io), None)
+        # self.main_image = InMemoryUploadedFile(im_io, 'ImageField', "%s.jpg" % self.main_image.name.split('.')[0],
+        #                                        'main_images/', sys.getsizeof(im_io), None)
+        im.close()
+        self.main_image.close()
+        print(self.main_image.name.split("/")[-1])
+        new_image = File(im_io, name=self.main_image.name.split("/")[-1])
+        self.main_image = new_image
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -90,12 +76,18 @@ class Picture(models.Model):
 
     def save(self, *args, **kwargs):
         im = Image.open(self.image)
-        bg = Image.new("RGB", im.size, (255, 255, 255))
-        bg.paste(im, mask=im.split()[3])
         im_io = BytesIO()
-        bg.save(im_io, 'JPEG', quality=80)
-        self.image = InMemoryUploadedFile(im_io, 'ImageField', "%s.jpg" % self.image.name.split('.')[0],
-                                          'images/', sys.getsizeof(im_io), None)
+        if imghdr.what(self.image)  == "png":
+            bg = Image.new("RGB", im.size, (255, 255, 255))
+            bg.paste(im, mask=im.split()[3])
+            bg.save(im_io, 'JPEG', quality=80)
+        else:
+            im.save(im_io, 'JPEG')
+
+        self.image.close()
+
+        new_image = File(im_io, name=self.image.name.split("/")[-1])
+        self.image = new_image
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -133,3 +125,4 @@ class Condition(models.Model):
     class Meta:
         verbose_name = "Документ"
         verbose_name_plural = "Условия и Документи"
+

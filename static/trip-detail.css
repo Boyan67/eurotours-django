@@ -167,7 +167,7 @@
   height: var(--dl-size-size-xsmall);
 }
 .trip-detail-container02 {
-  width: 80%;
+  width: 75%;
   height: auto;
   display: flex;
   box-shadow: 0px 0px 10px 0px #d4d4d4;
@@ -180,12 +180,13 @@
 }
 .trip-detail-image2 {
   width: 100%;
-  height: 450px;
+  height: 500px;
   object-fit: cover;
 }
 .trip-detail-container03 {
   width: 100%;
   height: auto;
+  overflow-x: auto;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -265,7 +266,6 @@
   font-style: normal;
   font-weight: 700;
   margin-top: 15px;
-  margin-bottom: 5px;
 }
 .trip-detail-container09 {
   flex: 0 0 auto;
@@ -341,7 +341,7 @@
   padding-left: 10px;
 }
 .trip-detail-container13 {
-  width: auto;
+  width: 50%;
   height: auto;
   display: flex;
   margin-top: 10px;
@@ -358,17 +358,20 @@
 }
 .trip-detail-text06 {
   color: #333;
-  width: 200px;
+  width: 100%;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
   padding-left: 10px;
 }
+hr{
+  margin: 10px 0 15px 0;
+}
+
 .trip-detail-text07 {
   color: #333;
   width: 100%;
   font-size: 18px;
-  margin-top: 10px;
   text-align: justify;
   line-height: 1.15;
   margin-bottom: 20px;
@@ -502,8 +505,8 @@
 
 
 .category-icon{
-  width: 55px;
-  height: 55px;
+  width: 50px;
+  height: 50px;
 }
 
 .home-container06 {

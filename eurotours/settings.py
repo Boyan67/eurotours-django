@@ -138,5 +138,24 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
+TINYMCE_DEFAULT_CONFIG = ({
+    "theme": "silver",
+
+    "height": 500,
+    "menubar": False,
+    "plugins": "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code "
+    "fullscreen insertdatetime media table paste code help wordcount spellchecker"
+    "code,help,wordcount",
+    "toolbar": "undo redo | fontselect formatselect fontsizeselect | "
+    "bold italic underline forecolor backcolor | alignleft aligncenter "
+    "alignright alignjustify | bullist numlist outdent indent | "
+    "table | help",
+    'content_style': '.mcecontentbody{font-size:20px;}',
+    'style_formats': [
+        [{'table':'border'}]
+    ]
+})
+
 TINYMCE_JS_URL = 'https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js'
 TINYMCE_COMPRESSOR = False
+
