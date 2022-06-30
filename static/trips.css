@@ -6,7 +6,7 @@
   flex-direction: row;
 }
 .navigation-links-navlink {
-  color: #ff6600;
+  color: #0809c2;
   font-size: 17px;
   font-style: normal;
   font-weight: 600;
@@ -22,7 +22,7 @@
   text-decoration: none;
 }
 .navigation-links-navlink1:hover {
-  color: #ff6600;
+  color: #0809c2;
 }
 .navigation-links-navlink2 {
   color: #464646;
@@ -34,7 +34,7 @@
   text-decoration: none;
 }
 .navigation-links-navlink2:hover {
-  color: #ff6600;
+  color: #0809c2;
 }
 .navigation-links-navlink3 {
   color: #464646;
@@ -46,7 +46,7 @@
   text-decoration: none;
 }
 .navigation-links-navlink3:hover {
-  color: #ff6600;
+  color: #0809c2;
 }
 .navigation-links-navlink4 {
   color: #464646;
@@ -58,7 +58,7 @@
   text-decoration: none;
 }
 .navigation-links-navlink4:hover {
-  color: #ff6600;
+  color: #0809c2;
 }
 
 
@@ -164,7 +164,7 @@
   height: var(--dl-size-size-xsmall);
 }
 .trips-text {
-  color: #ff6600;
+  color: #0809c2;
   font-size: 32px;
   font-style: normal;
   margin-top: 35px;
@@ -188,7 +188,7 @@
   font-family: Inter, serif;
 }
 .trips-text005 {
-  color: #ff6600;
+  color: #0809c2;
   font-family: Inter, serif;
 }
 .trips-container002 {
@@ -229,12 +229,12 @@
   height: 110px;
   display: flex;
   min-width: 135px;
-  align-self: stretch;
   transition: 0.3s;
   align-items: center;
+  text-align: center;
   border-color: #c3c3c3;
   border-width: 1px;
-  padding-left: 0px;
+  padding-left: 10px;
   border-radius: var(--dl-radius-radius-radius8);
   margin: 10px;
   flex-direction: column;
@@ -322,7 +322,7 @@
   align-items: center;
   border-color: #c3c3c3;
   border-width: 1px;
-  padding-left: 0px;
+
   border-radius: var(--dl-radius-radius-radius8);
   margin: 10px;
   flex-direction: column;
@@ -728,13 +728,13 @@
   text-align: center;
   transition: 0.3s;
   font-weight: 600;
-  border-color: #ff6600;
+  border-color: #0809c2;
   border-width: 2px;
   border-radius: 0px;
-  background-color: #ff6600;
+  background-color: #0809c2;
 }
 .trips-button:hover {
-  color: #ff6600;
+  color: #0809c2;
   background-color: var(--dl-color-gray-white);
 }
 .trips-container029 {
@@ -749,21 +749,7 @@
 }
 
 
-.trips-footer {
-  width: 100%;
-  display: flex;
-  max-width: 100%;
-  min-width: 100%;
-  margin-top: 50px;
-  align-items: center;
-  border-color: #ff6600;
-  border-width: 0px;
-  flex-direction: column;
-  padding: var(--dl-space-space-twounits) var(--dl-space-space-threeunits);
-  justify-content: space-between;
-  background-color: #ffffff;
-  border-top-width: 3px;
-}
+
 .trips-container140 {
   display: flex;
   max-width: var(--dl-size-size-maxwidth);
@@ -782,6 +768,10 @@
   align-items: center;
   flex-direction: row;
 }
+.trips-nav2 a{
+  margin: 0 5px;
+}
+
 .trips-navlink {
   margin-left: 0px;
   text-decoration: none;
@@ -802,21 +792,7 @@
   margin-left: var(--dl-space-space-unit);
   text-decoration: none;
 }
-.trips-separator {
-  flex: 0 0 auto;
-  width: 100%;
-  height: 0px;
-  display: flex;
-  align-items: flex-start;
-  border-color: var(--dl-color-gray-900);
-  border-style: solid;
-  border-width: 1px;
-  margin: var(--dl-space-space-oneandhalfunits) 0px;
-  flex-direction: row;
-  border-top-width: 0px;
-  border-left-width: 0px;
-  border-right-width: 0px;
-}
+
 .trips-container141 {
   flex: 0 0 auto;
   width: 100%;
@@ -832,7 +808,7 @@
   justify-content: space-between;
 }
 .trips-icon098 {
-  fill: #ff6600;
+  fill: #0809c2;
   width: var(--dl-size-size-small);
   height: var(--dl-size-size-small);
 }
@@ -900,16 +876,20 @@
   padding: 12px;
 }
 @media(max-width: 767px) {
-    .dash{
-    width: 100%;
-    min-width: 100px;
+
+  .trips-text{
+    margin-top: 10px;
+    font-size: 28px;
+  }
+  .dash{
+    width: 10%;
   }
   .price-gt {
-    width: 100%;
+    width: 45%;
     min-width: 100px;
   }
   .price-lt {
-    width: 100%;
+    width: 45%;
     min-width: 100px;
   }
   .trips-header {
@@ -979,6 +959,15 @@
   .filters{
     width: 330px;
   }
+  .category-button span{
+    display: none;
+  }
+  .category-button{
+    min-width: 70px;
+    height: 70px;
+  }
+
+  #price-
 
   .trips-header {
     padding: var(--dl-space-space-unit);
@@ -993,6 +982,8 @@
   .trips-container002 {
     padding-left: 35px;
     padding-right: 35px;
+    padding-bottom: 0;
+    margin-bottom: 5px;
   }
   .trips-container003 {
     padding-left: 15px;
@@ -1068,6 +1059,10 @@
     text-align: center;
     margin-bottom: var(--dl-space-space-oneandhalfunits);
   }
+}
+
+.category-button{
+  padding: 0;
 }
 
 /*div label input {*/

@@ -9,5 +9,4 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     path('conditions/', views.conditions, name='conditions'),
-    path('trips/<int:month_id>', views.trip_month, name='trip_month')
 ]

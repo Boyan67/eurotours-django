@@ -1,0 +1,211 @@
+{% load filters %}
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>Екскурзия/Почивка Подробности - Eurotours BG</title>
+    <meta property="og:title" content="Екскурзия/Почивка Подробности - Eurotours BG" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6 {  margin: 0;  padding: 0;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+            data-tag="font"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+      <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+            <link rel="stylesheet" type="text/css" href="{% static 'trip-detail.css' %}">
+  </head>
+  <body>
+    <div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom" style="padding: 7px 10px;">
+            <a class="navbar-brand" href="#"><img src="{% static 'images/logo.png' %}" alt="Евротурс Лого" style="height: 43px;"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="font-size: 17px; font-weight: 600; font-family: Inter,serif;">
+               <div class="navbar-nav ml-auto">
+                  <form class="form-inline" method="POST" action="{% url 'trips' %}">
+                      {% csrf_token %}
+                     <input class="form-control mr-sm-2" type="search" placeholder="Търсене" aria-label="Search" name="search">
+                     <button class="btn btn-outline-success my-2 my-sm-0 custom-btn" type="submit"><i class="bi bi-search"></i></button>
+                  </form>
+                  <a class="nav-item nav-link" href="{% url 'index' %}">НАЧАЛО <span class="sr-only">(current)</span></a>
+                  <a class="nav-item nav-link" href="{% url 'trips' %}">ЕКСКУРЗИИ И ПОЧИВКИ</a>
+                  <a class="nav-item nav-link" href="{% url 'about' %}">ЗА НАС</a>
+                  <a class="nav-item nav-link" href="{% url 'contact' %}">КОНТАТКИ</a>
+                  <a class="nav-item nav-link" href="{% url 'conditions' %}">УСЛОВИЯ</a>
+               </div>
+            </div>
+         </nav>
+      <div class="trip-detail-container">
+
+        <div class="trip-detail-container02">
+          <img
+            alt="image"
+            src="{{ trip.main_image.url }}"
+            class="trip-detail-image2"
+          />
+          <div class="trip-detail-container03">
+            <div class="home-container06">
+
+                        {#                        If category overnight(id=1) is in trip's categories show icon#}
+                        {% if 1|category_in:trip.category.all %}
+                        <div title="С Нощувка"  class="home-container07 category-icon" style="margin: 0 5px 0 0">
+                           <svg viewBox="0 0 1024 1024" class="home-icon10">
+                              <path
+                                 d="M256 512v128h512v-128h-512zM342 298v128h128v-128h-128zM682 426v-128h-128v128h128zM854 512v214h-58l-28 84h-42l-28-84h-370l-30 84h-42l-28-84h-58v-214q0-34 26-60t60-26v-128q0-34 26-59t60-25h340q34 0 60 25t26 59v128q34 0 60 26t26 60z"
+                                 ></path>
+                           </svg>
+                        </div>
+                        {% endif %}
+
+                        {% if 2|category_in:trip.category.all %}
+                        <div title="Пазаруване" class="shopping category-icon" style="margin-right: 5px; display: flex; align-items: center;
+                           margin-left: 5px; border-radius: var(--dl-radius-radius-round); flex-direction: column;
+                           justify-content: center; background-color: rgba(240, 101, 172, 0.3);">
+                           <img alt="image" src="{% static 'images/icons8-basket-64-200h.png' %}" class="home-image03"/>
+                        </div>
+                        {% endif %}
+
+
+                        {% if 3|category_in:trip.category.all %}
+                        <div title="Включена Храна" class="home-container08 category-icon" style="margin: 0 5px 0 0">
+                           <img alt="image" src="{% static 'images/icons8-restaurant-100-200h.png' %}" class="home-image03"/>
+                        </div>
+                        {% endif %}
+                        {% if 4|category_in:trip.category.all %}
+                        <div title="Екскурзия" class="home-container09  category-icon" style="margin: 0 5px 0 0">
+                           <img alt="image" src="{% static 'images/icons8-guide-100.png' %}" class="home-image04"/>
+                        </div>
+                        {% endif %}
+
+                        {% if 5|category_in:trip.category.all %}
+                        <div title="За Ученици" class="school category-icon" style="margin-right:5px; display: flex; align-items: center;
+                           border-radius: var(--dl-radius-radius-round); flex-direction: column;
+                           justify-content: center; background-color: rgba(255, 0, 0, 0.3);">
+                           <img alt="image" src="{% static 'images/icons8-school-90-200h.png' %}" class="home-image03"/>
+                        </div>
+                        {% endif %}
+                        {% if 6|category_in:trip.category.all %}
+                        <div title="Почивка" class="holiday category-icon" style="margin-right:5px; display: flex; align-items: center;
+                           border-radius: var(--dl-radius-radius-round); flex-direction: column;
+                           justify-content: center; background-color: rgba(87, 184, 255, 0.3);">
+                           <img alt="image" src="{% static 'images/icons8-holiday-100.png' %}" class="home-image04"/>
+                        </div>
+                        {% endif %}
+                        {% if 7|category_in:trip.category.all %}
+                        <div title="Природа" class="nature category-icon" style="margin-right:5px; display: flex; align-items: center;
+                            border-radius: var(--dl-radius-radius-round); flex-direction: column;
+                           justify-content: center; background-color: rgba(8, 131, 56, 0.3);">
+                           <img alt="image" src="{% static 'images/icons8-ski-resort-96-200h.png' %}" class="home-image04"/>
+                        </div>
+                        {% endif %}
+                     </div>
+            <div class="trip-detail-container08">
+              <span class="trip-detail-text">
+                {{ trip.name|upper }}
+              </span>
+              <div class="trip-detail-container09">
+                <span class="trip-detail-text01">от</span>
+                <span class="trip-detail-text02">{{ trip.price }}лв</span>
+              </div>
+            </div>
+            <div class="trip-detail-container10">
+              <div class="trip-detail-container11">
+                <svg viewBox="0 0 1088 1024" class="trip-detail-icon12">
+                  <path
+                    d="M640 64c247.424 0 448 200.576 448 448s-200.576 448-448 448v-96c94.024 0 182.418-36.614 248.902-103.098s103.098-154.878 103.098-248.902c0-94.022-36.614-182.418-103.098-248.902s-154.878-103.098-248.902-103.098c-94.022 0-182.418 36.614-248.902 103.098-51.14 51.138-84.582 115.246-97.306 184.902h186.208l-224 256-224-256h164.57c31.060-217.102 217.738-384 443.43-384zM832 448v128h-256v-320h128v192z"
+                  ></path>
+                </svg>
+                <span class="trip-detail-text03">{{ trip.duration }}</span>
+              </div>
+              <div class="trip-detail-container12">
+                <svg viewBox="0 0 1024 1024" class="trip-detail-icon14">
+                  <path
+                    d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 960.002c-62.958 0-122.872-13.012-177.23-36.452l233.148-262.29c5.206-5.858 8.082-13.422 8.082-21.26v-96c0-17.674-14.326-32-32-32-112.99 0-232.204-117.462-233.374-118.626-6-6.002-14.14-9.374-22.626-9.374h-128c-17.672 0-32 14.328-32 32v192c0 12.122 6.848 23.202 17.69 28.622l110.31 55.156v187.886c-116.052-80.956-192-215.432-192-367.664 0-68.714 15.49-133.806 43.138-192h116.862c8.488 0 16.626-3.372 22.628-9.372l128-128c6-6.002 9.372-14.14 9.372-22.628v-77.412c40.562-12.074 83.518-18.588 128-18.588 70.406 0 137.004 16.26 196.282 45.2-4.144 3.502-8.176 7.164-12.046 11.036-36.266 36.264-56.236 84.478-56.236 135.764s19.97 99.5 56.236 135.764c36.434 36.432 85.218 56.264 135.634 56.26 3.166 0 6.342-0.080 9.518-0.236 13.814 51.802 38.752 186.656-8.404 372.334-0.444 1.744-0.696 3.488-0.842 5.224-81.324 83.080-194.7 134.656-320.142 134.656z"
+                  ></path>
+                </svg>
+                <span class="trip-detail-text04"><span>{{ trip.country }}</span></span>
+              </div>
+              <div class="trip-detail-container13">
+                <svg
+                  viewBox="0 0 950.8571428571428 1024"
+                  class="trip-detail-icon16">
+                  <path
+                    d="M73.143 950.857h164.571v-164.571h-164.571v164.571zM274.286 950.857h182.857v-164.571h-182.857v164.571zM73.143 749.714h164.571v-182.857h-164.571v182.857zM274.286 749.714h182.857v-182.857h-182.857v182.857zM73.143 530.286h164.571v-164.571h-164.571v164.571zM493.714 950.857h182.857v-164.571h-182.857v164.571zM274.286 530.286h182.857v-164.571h-182.857v164.571zM713.143 950.857h164.571v-164.571h-164.571v164.571zM493.714 749.714h182.857v-182.857h-182.857v182.857zM292.571 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM713.143 749.714h164.571v-182.857h-164.571v182.857zM493.714 530.286h182.857v-164.571h-182.857v164.571zM713.143 530.286h164.571v-164.571h-164.571v164.571zM731.429 256v-164.571c0-9.714-8.571-18.286-18.286-18.286h-36.571c-9.714 0-18.286 8.571-18.286 18.286v164.571c0 9.714 8.571 18.286 18.286 18.286h36.571c9.714 0 18.286-8.571 18.286-18.286zM950.857 219.429v731.429c0 40-33.143 73.143-73.143 73.143h-804.571c-40 0-73.143-33.143-73.143-73.143v-731.429c0-40 33.143-73.143 73.143-73.143h73.143v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h219.429v-54.857c0-50.286 41.143-91.429 91.429-91.429h36.571c50.286 0 91.429 41.143 91.429 91.429v54.857h73.143c40 0 73.143 33.143 73.143 73.143z"
+                  ></path>
+                </svg>
+                <span class="trip-detail-text06">
+                  {% for month in trip.months.all %}
+                      {{ month }},
+                  {% endfor %}
+                </span>
+              </div>
+            </div>
+            <span class="trip-detail-text07">
+                <hr>
+              {{ trip.text|safe }}
+            </span>
+          </div>
+        </div>
+        <footer class="footer">
+            <div class="footer-container">
+              <img
+                alt="logo"
+                src="{% static "images/logo.png" %}"
+                style="width: 230px; margin-bottom: 30px"
+              />
+              <nav class="nav2">
+                <a href="{% url 'index' %}" class="home-navlink1">Начало</a>
+                 <a href="{% url 'trips' %}" class="home-navlink2">Екскурзии</a>
+                 <a href="{% url 'about' %}" class="home-navlink3">За Нас</a>
+                 <a href="{% url 'contact' %}" class="home-navlink4">Контакти</a>
+                 <a href="{% url 'conditions' %}" class="home-navlink5">Условия</a>
+              </nav>
+            </div>
+            <div class="separator"></div>
+            <div class="footer-container2">
+              <span class="footer-text">© 2022 eurotours-bg.com</span>
+              <a class="footer-icon" href="https://www.facebook.com/eurotours.vt.9">
+                <svg viewBox="0 0 877.7142857142857 1024"
+                  class="footer-icon2">
+                  <path
+                    d="M829.143 73.143c26.857 0 48.571 21.714 48.571 48.571v780.571c0 26.857-21.714 48.571-48.571 48.571h-223.429v-340h113.714l17.143-132.571h-130.857v-84.571c0-38.286 10.286-64 65.714-64l69.714-0.571v-118.286c-12-1.714-53.714-5.143-101.714-5.143-101.143 0-170.857 61.714-170.857 174.857v97.714h-114.286v132.571h114.286v340h-420c-26.857 0-48.571-21.714-48.571-48.571v-780.571c0-26.857 21.714-48.571 48.571-48.571h780.571z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </footer>
+      </div>
+    </div>
+  </body>
+</html>

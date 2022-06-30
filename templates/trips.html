@@ -4,13 +4,13 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <title>trips - Strict True Leopard</title>
-      <meta property="og:title" content="trips - Strict True Leopard" />
-      <meta property="og:title" content="contact - Strict True Leopard" />
-      <meta property="og:title" content="usloviq - Strict True Leopard" />
+      <title>Екскурзии и Почивки - Eurotours BG</title>
+      <meta property="og:title" content="Екскурзии и Почивки - Eurotours BG" />
+      <meta property="og:title" content="Контакти - Eurotours BG" />
+      <meta property="og:title" content="Условия - Eurotours BG" />
       <meta
          property="og:title"
-         content="Testing Features - Strict True Leopard"
+         content="Testing Features - Eurotours BG"
          />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta charset="utf-8" />
@@ -50,16 +50,16 @@
    <body>
       <div>
          <link rel="stylesheet" type="text/css" href="{% static 'trips.css' %}">
-         <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom" style="padding: 10px 30px">
-            <a class="navbar-brand" href="#"><img src="public/playground_assets/logo-1500h.png" alt="Евротурс Лого" style="height: 47px"></a>
+         <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom" style="padding: 7px 10px;">
+            <a class="navbar-brand" href="#"><img src="{% static 'images/logo.png' %}" alt="Евротурс Лого" style="height: 43px;"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="font-size: 17px; font-weight: 600; font-family: Inter,serif;">
                <div class="navbar-nav ml-auto">
                   <form class="form-inline" method="POST" action="{% url 'trips' %}">
-                     {% csrf_token %}
-                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                      {% csrf_token %}
+                     <input class="form-control mr-sm-2" type="search" placeholder="Търсене" aria-label="Search" name="search">
                      <button class="btn btn-outline-success my-2 my-sm-0 custom-btn" type="submit"><i class="bi bi-search"></i></button>
                   </form>
                   <a class="nav-item nav-link" href="{% url 'index' %}">НАЧАЛО <span class="sr-only">(current)</span></a>
@@ -83,6 +83,9 @@
                 {% if search_box %}
                <h3>За: "{{ search_box }}"</h3>
                {% endif %}
+            {% if category %}
+            <h3>В категория: {{ category }}</h3>
+            {% endif %}
             </span>
             <div class="trips-container002">
                <img
@@ -94,7 +97,7 @@
             </div>
             <form class="trips-container003" method="POST" action="{% url 'trips' %}">
                 {% csrf_token %}
-               <button class="trips-container004" type="submit"  value="Overnight" name="category">
+               <button class="trips-container004 category-button" type="submit"  value="С Нощувка" name="category" style="align-content: center">
                   <div class="trips-container005">
                      <svg viewBox="0 0 1024 1024" class="trips-icon010">
                         <path
@@ -109,7 +112,7 @@
                   </span>
                </button>
 
-               <button class="trips-container006" type="submit"  value="Shopping" name="category">
+               <button class="trips-container006 category-button" type="submit"  value="Пазаруване" name="category">
                   <div class="trips-container007">
                      <img
                         alt="image"
@@ -120,7 +123,7 @@
                   <span class="trips-text010">Пазаруване</span>
                </button>
 
-               <button class="trips-container008" type="submit"  value="Food Included" name="category">
+               <button class="trips-container008 category-button" type="submit"  value="Включена Храна" name="category">
                   <div class="trips-container009">
                      <img
                         alt="image"
@@ -131,7 +134,7 @@
                   <span class="trips-text011">Включена Храна</span>
                </button>
 
-               <button class="trips-container010" type="submit"  value="Excursion" name="category">
+               <button class="trips-container010 category-button" type="submit"  value="Екскурзия" name="category">
                   <div class="trips-container011">
                      <img
                         alt="image"
@@ -142,7 +145,7 @@
                   <span class="trips-text012">Екскурзия</span>
                </button>
 
-               <button class="trips-container012" type="submit"  value="Nature" name="category">
+               <button class="trips-container012 category-button" type="submit"  value="Природа" name="category">
                   <div class="trips-container013">
                      <img
                         alt="image"
@@ -157,7 +160,7 @@
                   </span>
                </button>
 
-               <button class="trips-container014" type="submit"  value="For Students" name="category">
+               <button class="trips-container014 category-button" type="submit"  value="За Ученици" name="category">
                   <div class="trips-container015">
                      <img
                         alt="image"
@@ -168,7 +171,7 @@
                   <span class="trips-text016"><span>За Ученици</span></span>
                </button>
 
-               <button class="trips-container016" type="submit"  value="Holiday" name="category">
+               <button class="trips-container016 category-button" type="submit"  value="Почивка" name="category">
                   <div class="trips-container017">
                      <img
                         alt="image"
@@ -184,8 +187,6 @@
             <form class="trips-container018" method="GET" style="justify-content: center">
                {% csrf_token %}
 
-
-                {#        TODO: MOBILE VIEW - MAKE PRICE APPEAR NEXT TO EACH OTHER #}
                <div class="trips-container019 price-div filters">
                   <div class="trips-container020 price-div-text">
                      <img
@@ -254,7 +255,7 @@
                <!--      A single trip card-->
                {% if all_trips %}
                {% for trip in all_trips %}
-               <a class=".reset-a" href="trip-detail.html">
+               <a class=".reset-a" href="{% url 'trip_details' trip.id %}">
                   <div class="home-container05">
                      <div class="home-container06">
                         {#                        If category overnight(id=1) is in trip's categories show icon#}
@@ -352,36 +353,37 @@
                </a>
                {% endfor %}
                {% else %}
-               <h3 style="color: #333; margin-bottom: 250px">Няма Намерени Екскурзии и Почивки...</h3>
+               <h3 style="color: #333; margin-bottom: 250px; text-align: center">Няма Намерени Екскурзии и Почивки...</h3>
                {% endif %}
             </div>
-            <footer class="trips-footer">
-               <div class="trips-container140">
-                  <img
-                     alt="logo"
-                     src="public/playground_assets/logo-1500h.png"
-                     class="trips-image40"
-                     />
-                  <nav class="trips-nav2">
-                     <a href="index.html" class="trips-navlink">Начало</a>
-                     <a href="trips.html" class="trips-navlink1">Екскурзии</a>
-                     <a href="about.html" class="trips-navlink2">За Нас</a>
-                     <a href="contact.html" class="trips-navlink3">Контакти</a>
-                     <a href="usloviq.html" class="trips-navlink4">Условия</a>
-                  </nav>
-               </div>
-               <div class="trips-separator"></div>
-               <div class="trips-container141">
-                  <span class="trips-text103">© 2021 eurotours-bg.com</span>
-                  <div class="trips-icon-group1">
-                     <svg viewBox="0 0 877.7142857142857 1024" class="trips-icon098">
-                        <path
-                           d="M829.143 73.143c26.857 0 48.571 21.714 48.571 48.571v780.571c0 26.857-21.714 48.571-48.571 48.571h-223.429v-340h113.714l17.143-132.571h-130.857v-84.571c0-38.286 10.286-64 65.714-64l69.714-0.571v-118.286c-12-1.714-53.714-5.143-101.714-5.143-101.143 0-170.857 61.714-170.857 174.857v97.714h-114.286v132.571h114.286v340h-420c-26.857 0-48.571-21.714-48.571-48.571v-780.571c0-26.857 21.714-48.571 48.571-48.571h780.571z"
-                           ></path>
-                     </svg>
-                  </div>
-               </div>
-            </footer>
+            <footer class="footer">
+            <div class="footer-container">
+              <img
+                alt="logo"
+                src="{% static "images/logo.png" %}"
+                style="width: 230px; margin-bottom: 30px"
+              />
+              <nav class="nav2">
+                <a href="{% url 'index' %}" class="home-navlink1">Начало</a>
+                 <a href="{% url 'trips' %}" class="home-navlink2">Екскурзии</a>
+                 <a href="{% url 'about' %}" class="home-navlink3">За Нас</a>
+                 <a href="{% url 'contact' %}" class="home-navlink4">Контакти</a>
+                 <a href="{% url 'conditions' %}" class="home-navlink5">Условия</a>
+              </nav>
+            </div>
+            <div class="separator"></div>
+            <div class="footer-container2">
+              <span class="footer-text">© 2022 eurotours-bg.com</span>
+              <a class="footer-icon" href="https://www.facebook.com/eurotours.vt.9">
+                <svg viewBox="0 0 877.7142857142857 1024"
+                  class="footer-icon2">
+                  <path
+                    d="M829.143 73.143c26.857 0 48.571 21.714 48.571 48.571v780.571c0 26.857-21.714 48.571-48.571 48.571h-223.429v-340h113.714l17.143-132.571h-130.857v-84.571c0-38.286 10.286-64 65.714-64l69.714-0.571v-118.286c-12-1.714-53.714-5.143-101.714-5.143-101.143 0-170.857 61.714-170.857 174.857v97.714h-114.286v132.571h114.286v340h-420c-26.857 0-48.571-21.714-48.571-48.571v-780.571c0-26.857 21.714-48.571 48.571-48.571h780.571z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </footer>
          </div>
       </div>
    </body>

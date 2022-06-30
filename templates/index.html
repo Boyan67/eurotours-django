@@ -3,19 +3,17 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <title>Strict True Leopard</title>
-      <meta property="og:title" content="Strict True Leopard" />
+      <title>Eurotours BG</title>
+      <meta property="og:title" content="Eurotours BG" />
       <meta property="twitter:card" content="summary_large_image" />
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta property="og:title" content="about - Strict True Leopard" />
-      <meta property="og:title" content="trips - Strict True Leopard" />
-      <meta property="og:title" content="contact - Strict True Leopard" />
-      <meta property="og:title" content="usloviq - Strict True Leopard" />
-      <meta
-         property="og:title"
-         content="Testing Features - Strict True Leopard"
-         />
+      <meta property="og:title" content="about - Eurotours BG" />
+      <meta property="og:title" content="Екскурзии и Почивки - Eurotours BG" />
+      <meta property="og:title" content="Контакти - Eurotours BG" />
+      <meta property="og:title" content="Условия - Eurotours BG" />
+       <meta name="description" content="ЕВРОТУРС-ВТ е туроператор с много опит в организацията на пътувания по различен вкус и желания, в България и Чужбина. Наше задължение е да осигурим най-високо качество на обслужване.">
+       <meta name="keywords" content="евротурс, eurotours, екскурзии, почивки, ваканции, пътуване, автовус, европа, travel, vacations, trip">
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta charset="utf-8" />
       <meta property="twitter:card" content="summary_large_image" />
@@ -56,8 +54,8 @@
    </head>
    <body>
       <div>
-         <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom" style="padding: 10px 30px">
-            <a class="navbar-brand" href="#"><img src="{% static 'images/logo-1500h.png' %}" alt="Евротурс Лого" style="height: 47px"></a>
+         <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom" style="padding: 7px 10px;">
+            <a class="navbar-brand" href="#"><img src="{% static 'images/logo.png' %}" alt="Евротурс Лого" style="height: 43px;"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -65,10 +63,10 @@
                <div class="navbar-nav ml-auto">
                   <form class="form-inline" method="POST" action="{% url 'trips' %}">
                       {% csrf_token %}
-                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                     <input class="form-control mr-sm-2" type="search" placeholder="Търсене" aria-label="Search" name="search">
                      <button class="btn btn-outline-success my-2 my-sm-0 custom-btn" type="submit"><i class="bi bi-search"></i></button>
                   </form>
-                  <a class="nav-item nav-link active" href="index.html">НАЧАЛО <span class="sr-only">(current)</span></a>
+                  <a class="nav-item nav-link active" href="{% url 'index' %}">НАЧАЛО <span class="sr-only">(current)</span></a>
                   <a class="nav-item nav-link" href="{% url 'trips' %}">ЕКСКУРЗИИ И ПОЧИВКИ</a>
                   <a class="nav-item nav-link" href="{% url 'about' %}">ЗА НАС</a>
                   <a class="nav-item nav-link" href="{% url 'contact' %}">КОНТАТКИ</a>
@@ -79,7 +77,7 @@
          <div class="home-container">
             <img
                alt="image"
-               src="{% static 'images/trip4.jpg' %}"
+               src="{{ home_image.home_image.url }}"
                class="home-image02"
                />
             <span>Text</span>
@@ -110,7 +108,7 @@
             <div class="home-container04">
 
                {% for trip in top_trips %}
-               <a class=".reset-a" href="trip-detail.html">
+               <a class=".reset-a" href="{% url 'trip_details' trip.id %}">
                   <div class="home-container05">
                      <div class="home-container06">
 
@@ -308,33 +306,34 @@
                </span>
                </span>
             </div>
-            <footer class="home-footer">
-               <div class="home-container63">
-                  <img
-                     alt="logo"
-                     src="{% static 'images/logo-1500h.png' %}"
-                     class="home-image18"
-                     />
-                  <nav class="home-nav2">
-                     <a href="index.html" class="home-navlink1">Начало</a>
-                     <a href="trips.html" class="home-navlink2">Екскурзии</a>
-                     <a href="about.html" class="home-navlink3">За Нас</a>
-                     <a href="contact.html" class="home-navlink4">Контакти</a>
-                     <a href="usloviq.html" class="home-navlink5">Условия</a>
-                  </nav>
-               </div>
-               <div class="home-separator"></div>
-               <div class="home-container64">
-                  <span class="home-text69">© 2022 eurotours-bg.com</span>
-                  <div class="home-icon-group1">
-                     <svg viewBox="0 0 877.7142857142857 1024" class="home-icon50">
-                        <path
-                           d="M829.143 73.143c26.857 0 48.571 21.714 48.571 48.571v780.571c0 26.857-21.714 48.571-48.571 48.571h-223.429v-340h113.714l17.143-132.571h-130.857v-84.571c0-38.286 10.286-64 65.714-64l69.714-0.571v-118.286c-12-1.714-53.714-5.143-101.714-5.143-101.143 0-170.857 61.714-170.857 174.857v97.714h-114.286v132.571h114.286v340h-420c-26.857 0-48.571-21.714-48.571-48.571v-780.571c0-26.857 21.714-48.571 48.571-48.571h780.571z"
-                           ></path>
-                     </svg>
-                  </div>
-               </div>
-            </footer>
+            <footer class="footer">
+            <div class="footer-container">
+              <img
+                alt="logo"
+                src="{% static "images/logo.png" %}"
+                style="width: 230px; margin-bottom: 30px"
+              />
+              <nav class="nav2">
+                <a href="{% url 'index' %}" class="home-navlink1">Начало</a>
+                 <a href="{% url 'trips' %}" class="home-navlink2">Екскурзии</a>
+                 <a href="{% url 'about' %}" class="home-navlink3">За Нас</a>
+                 <a href="{% url 'contact' %}" class="home-navlink4">Контакти</a>
+                 <a href="{% url 'conditions' %}" class="home-navlink5">Условия</a>
+              </nav>
+            </div>
+            <div class="separator"></div>
+            <div class="footer-container2">
+              <span class="footer-text">© 2022 eurotours-bg.com</span>
+              <a class="footer-icon" href="https://www.facebook.com/eurotours.vt.9">
+                <svg viewBox="0 0 877.7142857142857 1024"
+                  class="footer-icon2">
+                  <path
+                    d="M829.143 73.143c26.857 0 48.571 21.714 48.571 48.571v780.571c0 26.857-21.714 48.571-48.571 48.571h-223.429v-340h113.714l17.143-132.571h-130.857v-84.571c0-38.286 10.286-64 65.714-64l69.714-0.571v-118.286c-12-1.714-53.714-5.143-101.714-5.143-101.143 0-170.857 61.714-170.857 174.857v97.714h-114.286v132.571h114.286v340h-420c-26.857 0-48.571-21.714-48.571-48.571v-780.571c0-26.857 21.714-48.571 48.571-48.571h780.571z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </footer>
          </div>
       </div>
    </body>

@@ -1,8 +1,13 @@
+import sys
+
+from django.core.exceptions import ValidationError
+from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.db import models
 from tinymce import models as tinymce_models
 from io import BytesIO
 from PIL import Image
 from django.core.files import File
+from copy import deepcopy
 
 
 # image compression method
@@ -62,14 +67,69 @@ class Trip(models.Model):
     months = models.ManyToManyField(Month)
     text = tinymce_models.HTMLField()
 
-    # calling image compression function before saving the data
     def save(self, *args, **kwargs):
-        new_image = compress(self.main_image)
-        self.main_image = new_image
+        im = Image.open(self.main_image)
+        im_io = BytesIO()
+        im.save(im_io, 'JPEG', quality=50)
+        self.main_image = InMemoryUploadedFile(im_io, 'ImageField', "%s.jpg" % self.main_image.name.split('.')[0],
+                                               'main_images/', sys.getsizeof(im_io), None)
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Екскурзия/Почивка"
+        verbose_name_plural = "Екскурзии и Почивки"
 
 
 class Picture(models.Model):
     trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, blank=True)
     image = models.ImageField(upload_to='images/')
+
+    def save(self, *args, **kwargs):
+        im = Image.open(self.image)
+        bg = Image.new("RGB", im.size, (255, 255, 255))
+        bg.paste(im, mask=im.split()[3])
+        im_io = BytesIO()
+        bg.save(im_io, 'JPEG', quality=80)
+        self.image = InMemoryUploadedFile(im_io, 'ImageField', "%s.jpg" % self.image.name.split('.')[0],
+                                          'images/', sys.getsizeof(im_io), None)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.trip.name} - {self.name}"
+
+    class Meta:
+        verbose_name = "Снимка"
+        verbose_name_plural = "Снимки"
+
+
+class HomeImage(models.Model):
+    home_image = models.ImageField(upload_to='images/')
+
+    def save(self, *args, **kwargs):
+        if not self.pk and HomeImage.objects.exists():
+            raise ValidationError('Може да има само една начална снимка')
+        return super(HomeImage, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return "Начален Екран - Снимка"
+
+    class Meta:
+        verbose_name = "Начален Екран - Снимка"
+        verbose_name_plural = "Начален Екран - Снимка"
+
+
+class Condition(models.Model):
+    name = models.CharField(max_length=200)
+    document = models.FileField(upload_to='documents/')
+    text = tinymce_models.HTMLField()
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Документ"
+        verbose_name_plural = "Условия и Документи"

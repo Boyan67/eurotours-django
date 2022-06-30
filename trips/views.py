@@ -2,12 +2,13 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
 from .filters import TripFilter
-from .models import Trip, Month, Category
+from .models import Trip, Month, Category, HomeImage, Condition
 
 
 def index(request):
     top_trips = Trip.objects.filter(top_offer=True)
-    context = {'top_trips': top_trips}
+    home_image = HomeImage.objects.first()
+    context = {'top_trips': top_trips, 'home_image':home_image}
     return render(request, '../templates/index.html', context)
 
 
@@ -16,6 +17,8 @@ def trips(request):
     all_trips = Trip.objects.all()
     my_filter = TripFilter(request.GET, queryset=all_trips)
     all_trips = my_filter.qs
+    month = ""
+    category = ""
 
     if request.method == "POST":
         if request.POST.get('search'):
@@ -33,38 +36,26 @@ def trips(request):
             category = Category.objects.get(name=request.POST.get('category'))
             all_trips = Trip.objects.filter(category=category)
 
-    context = {'all_trips': all_trips, 'my_filter': my_filter, 'search_box': search_box}
-    return render(request, '../templates/trips.html', context)
-
-
-def trip_month(request, month_id):
-    month = Month.objects.get(id=month_id)
-    all_trips = Trip.objects.filter(months=month)
-
-    if request.method == "GET":
-        all_trips = Trip.objects.all()
-        my_filter = TripFilter(request.GET, queryset=all_trips)
-        all_trips = my_filter.qs
-        context = {'all_trips': all_trips, 'my_filter': my_filter}
-        return render(request, '../templates/trips.html', context)
-
-    context = {'all_trips': all_trips, 'month': month}
+    context = {'all_trips': all_trips, 'my_filter': my_filter, 'search_box': search_box,
+               'month': month, 'category': category}
     return render(request, '../templates/trips.html', context)
 
 
 def trip_details(request, trip_id):
     trip = Trip.objects.get(id=trip_id)
     context = {'trip': trip}
-    return render(request, '../templates/details.html', context)
+    return render(request, '../templates/trip-detail.html', context)
 
 
 def about(request):
-    return HttpResponse("ABOUT.")
+    return render(request, '../templates/about.html')
 
 
 def contact(request):
-    return HttpResponse("CONTACT.")
+    return render(request, '../templates/contact.html')
 
 
 def conditions(request):
-    return HttpResponse("CONDITIONS.")
+    usloviq = Condition.objects.all()
+    context = {'usloviq': usloviq}
+    return render(request, '../templates/usloviq.html', context)
