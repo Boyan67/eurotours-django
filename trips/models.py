@@ -22,7 +22,6 @@ def compress(image):
     return new_image
 
 
-
 class Category(models.Model):
     name = models.CharField(max_length=50)
 
@@ -77,10 +76,10 @@ class Picture(models.Model):
     def save(self, *args, **kwargs):
         im = Image.open(self.image)
         im_io = BytesIO()
-        if imghdr.what(self.image)  == "png":
+        if imghdr.what(self.image) == "png":
             bg = Image.new("RGB", im.size, (255, 255, 255))
             bg.paste(im, mask=im.split()[3])
-            bg.save(im_io, 'JPEG', quality=80)
+            bg.save(im_io, 'JPEG', quality=75)
         else:
             im.save(im_io, 'JPEG')
 
@@ -125,4 +124,3 @@ class Condition(models.Model):
     class Meta:
         verbose_name = "Документ"
         verbose_name_plural = "Условия и Документи"
-
