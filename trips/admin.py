@@ -1,3 +1,4 @@
+from django import forms
 from django.contrib import admin
 
 # Register your models here.
@@ -8,11 +9,16 @@ from django.contrib.auth.models import Group
 admin.site.unregister(User)
 admin.site.unregister(Group)
 
-admin.site.register(Trip)
-admin.site.register(Picture)
 # admin.site.register(Category)
 # admin.site.register(Month)
 admin.site.register(Condition)
+
+
+class PictureAdmin(admin.ModelAdmin):
+    list_display = ("trip", "name", "image", "id")
+
+
+admin.site.register(Picture, PictureAdmin)
 
 
 class CustomAdmin(admin.ModelAdmin):
@@ -22,3 +28,10 @@ class CustomAdmin(admin.ModelAdmin):
 
 
 admin.site.register(HomeImage, CustomAdmin)
+
+
+class TripsAdmin(admin.ModelAdmin):
+    list_display = ("name", "top_offer", "price", "country", "duration")
+
+
+admin.site.register(Trip, TripsAdmin)

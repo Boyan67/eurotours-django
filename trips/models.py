@@ -4,13 +4,14 @@ import sys
 from django.core.exceptions import ValidationError
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.db import models
+from django.dispatch import receiver
 from tinymce import models as tinymce_models
 from io import BytesIO
 from PIL import Image
 from django.core.files import File
-import imghdr
-import tinymce
-from copy import deepcopy
+from django.db.models.signals import pre_save
+from .storage import OverwriteStorage
+import os
 
 
 # image compression method
@@ -51,11 +52,9 @@ class Trip(models.Model):
         im = Image.open(self.main_image)
         im_io = BytesIO()
         im.save(im_io, 'JPEG', quality=50)
-        # self.main_image = InMemoryUploadedFile(im_io, 'ImageField', "%s.jpg" % self.main_image.name.split('.')[0],
-        #                                        'main_images/', sys.getsizeof(im_io), None)
-        im.close()
+        # im.close()
         self.main_image.close()
-        print(self.main_image.name.split("/")[-1])
+
         new_image = File(im_io, name=self.main_image.name.split("/")[-1])
         self.main_image = new_image
         super().save(*args, **kwargs)
@@ -69,26 +68,20 @@ class Trip(models.Model):
 
 
 class Picture(models.Model):
-    trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200, blank=True)
-    image = models.ImageField(upload_to='images/')
+    trip = models.ForeignKey(Trip, on_delete=models.CASCADE, verbose_name="Екскурзия/Почивка")
+    name = models.CharField(max_length=200, blank=True, verbose_name="Име за снимката")
+    image = models.ImageField(upload_to='images/', verbose_name="Снимка")
 
     def save(self, *args, **kwargs):
         im = Image.open(self.image)
         im_io = BytesIO()
-        if imghdr.what(self.image) == "png":
-            bg = Image.new("RGB", im.size, (255, 255, 255))
-            bg.paste(im, mask=im.split()[3])
-            bg.save(im_io, 'JPEG', quality=75)
-        else:
-            im.save(im_io, 'JPEG')
-
+        im.save(im_io, 'JPEG', quality=80)
+        # im.close()
         self.image.close()
 
-        new_image = File(im_io, name=self.image.name.split("/")[-1])
+        new_image = File(im_io, name=f"{self.trip.name}/{self.image.name.split('/')[-1]}")
         self.image = new_image
         super().save(*args, **kwargs)
-
     def __str__(self):
         return f"{self.trip.name} - {self.name}"
 
@@ -98,7 +91,7 @@ class Picture(models.Model):
 
 
 class HomeImage(models.Model):
-    home_image = models.ImageField(upload_to='images/')
+    home_image = models.ImageField(upload_to='images/', verbose_name="Снимка на Началният Екран")
 
     def save(self, *args, **kwargs):
         if not self.pk and HomeImage.objects.exists():
@@ -114,9 +107,9 @@ class HomeImage(models.Model):
 
 
 class Condition(models.Model):
-    name = models.CharField(max_length=200)
-    document = models.FileField(upload_to='documents/')
-    text = tinymce_models.HTMLField()
+    name = models.CharField(max_length=200, verbose_name="Име на Документа")
+    document = models.FileField(upload_to='documents/', verbose_name="Документ", blank=True)
+    text = tinymce_models.HTMLField(verbose_name="Текст")
 
     def __str__(self):
         return self.name
