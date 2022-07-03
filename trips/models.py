@@ -51,7 +51,11 @@ class Trip(models.Model):
     def save(self, *args, **kwargs):
         im = Image.open(self.main_image)
         im_io = BytesIO()
-        im.save(im_io, 'JPEG', quality=50)
+        if im.height > 335:
+            ratio = im.height / 335
+            width = int(im.width / ratio)
+            im = im.resize((width, 335))
+        im.save(im_io, 'JPEG', quality=85)
         # im.close()
         self.main_image.close()
 
@@ -75,7 +79,14 @@ class Picture(models.Model):
     def save(self, *args, **kwargs):
         im = Image.open(self.image)
         im_io = BytesIO()
-        im.save(im_io, 'JPEG', quality=80)
+        ratio = im.height / 500
+        width = int(im.width / ratio)
+        im = im.resize((width, 500))
+        if im.mode in ('RGBA', 'LA'):
+            background = Image.new(im.mode[:-1], im.size, '#fff')
+            background.paste(im, im.split()[-1])
+            im = background
+        im.save(im_io, 'JPEG', quality=90)
         # im.close()
         self.image.close()
 
