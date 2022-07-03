@@ -515,10 +515,30 @@ hr{
   padding: 0;
 }
 
+.carousel-control-next{
+  background-color: rgba(44,44,44,0.3);
+  width: 100px;
+}
+.carousel-control-prev{
+  background-color: rgba(44,44,44,0.3);
+  width: 100px;
+}
+
 
 @media(max-width: 479px) {
   .trip-detail-image2 {
     height: 300px;
+  }
+  .carousel-control-next{
+    background-color: transparent;
+    width: 50px;
+  }
+  .carousel-control-prev{
+    background-color: transparent;
+    width: 50px;
+  }
+  .trip-detail-image2{
+    object-fit: cover;
   }
 
   .category-icon{
